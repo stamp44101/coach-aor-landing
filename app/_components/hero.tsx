@@ -3,25 +3,32 @@ import Image from "next/image";
 export function Hero() {
   return (
     <>
-      {/* Hero — top section with soft background portrait wash */}
+      {/* Hero — full-width section with floral lily bg + heavy white wash */}
       <section
         id="top"
-        className="relative isolate overflow-hidden mx-auto max-w-7xl px-6 md:px-12 pt-12 md:pt-20 pb-20 md:pb-28"
+        className="relative isolate overflow-hidden w-full pt-12 md:pt-20 pb-20 md:pb-28"
       >
-        {/* Floral lily wash (sourced from published Canva) */}
+        {/* Floral lily wash (sourced from published Canva) — full viewport width */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10"
           style={{
             backgroundImage: "url(/img/hero-bg-lily.jpg)",
             backgroundSize: "cover",
-            backgroundPosition: "right center",
+            backgroundPosition: "center",
           }}
+        />
+        {/* Heavy cream wash — keep photo subtle, focus on text */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 bg-cream/80"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cream/40 via-cream/55 to-cream"
+          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cream/40 via-cream/30 to-cream"
         />
+
+        <div className="mx-auto max-w-7xl px-6 md:px-12">
 
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="font-display italic text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
@@ -38,13 +45,14 @@ export function Hero() {
           </p>
           <a
             href="#booking"
-            className="inline-block mt-8 md:mt-10 px-9 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
+            className="inline-block mt-8 md:mt-10 px-10 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors rounded-full"
           >
             Book a session
           </a>
           <p className="mt-6 md:mt-7 text-[13px] text-cocoa-soft tracking-wide">
             Unleash your potential with professional coaching.
           </p>
+        </div>
         </div>
       </section>
 

@@ -113,11 +113,15 @@ function CardBody({
   // shared multi-line title
   const titleLines = s.title.split("\n");
   return (
-    <div className="relative h-full flex flex-col text-cream"
-         style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}>
-      {/* Title centered top */}
-      <div className={`${layout === "feature" ? "pt-12 md:pt-16" : "pt-10 md:pt-12"} text-center px-6 md:px-8`}>
-        <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl leading-[1.05]">
+    <div
+      className="relative h-full flex flex-col justify-center text-cream px-6 md:px-8 py-8 md:py-10"
+      style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
+    >
+      {/* Title + description center vertically */}
+      <div className="text-center">
+        <h3
+          className={`font-display italic leading-[1.05] ${layout === "feature" ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+        >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
               {line}
@@ -130,7 +134,7 @@ function CardBody({
       </div>
 
       {/* Bullets left + meta + button right */}
-      <div className="mt-auto px-6 md:px-8 pb-7 md:pb-9 pt-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-end">
+      <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-end">
         <div>
           {s.topics && (
             <ul className="space-y-1 text-[13px] leading-snug">
@@ -223,27 +227,13 @@ export function Services() {
           ))}
         </div>
 
-        {/* === "Ready to start" CTA strip — photo bg, 60% left focal === */}
-        <div className="relative mt-10 md:mt-14 rounded-[3px] overflow-hidden min-h-[260px] md:min-h-[300px] flex items-center">
-          <Image
-            src="/img/cta-bg-v2.jpg"
-            alt=""
-            fill
-            sizes="100vw"
-            style={{ objectPosition: "60% center" }}
-            className="object-cover"
-          />
-          <div aria-hidden className="absolute inset-0 bg-black/15" />
-          <div className="relative w-full px-7 md:px-12 py-10 md:py-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <h3
-              className="font-display italic text-3xl md:text-4xl lg:text-5xl text-cream leading-[1.15] max-w-2xl"
-              style={{ textShadow: "0 1px 12px rgba(0,0,0,0.45)" }}
-            >
-              Ready to start your transformation
-              <br className="hidden md:block" /> with Coach Aor?
-            </h3>
-            <CreamPill />
-          </div>
+        {/* === "Ready to start" — plain text on tan-deep section, no box, no bg === */}
+        <div className="mt-14 md:mt-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+          <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-cream leading-[1.15] max-w-3xl">
+            Ready to start your transformation
+            <br className="hidden md:block" /> with Coach Aor?
+          </h3>
+          <CreamPill />
         </div>
       </div>
     </section>

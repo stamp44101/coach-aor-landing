@@ -15,7 +15,7 @@ const items: Item[] = [
       "I'm so grateful we met. I used to be paralyzed by the fear of building a business and investing my effort. Today, I've found the courage to take action and turn my vision into reality. I now wake up every day excited to live my life to the fullest.",
     name: "Khun Sine",
     role: "Psychotherapist & Business Owner",
-    img: "/img/testi-sine.jpg",
+    img: "/img/testi-pear.jpg",
     bandClass: "bg-mocha/85",
   },
   {
@@ -23,7 +23,7 @@ const items: Item[] = [
       "I want to thank you, Coach Aor, and thank myself for choosing to shift my inner energy. I spent so long chasing success until my body and mind completely broke down. Now, I've found the courage to quit and start building a new life for myself.",
     name: "Khun Pear",
     role: "Investor",
-    img: "/img/testi-pear.jpg",
+    img: "/img/testi-bam.jpg",
     bandClass: "bg-tan-deep/90",
   },
   {
@@ -31,7 +31,7 @@ const items: Item[] = [
       "Thank you for being my mirror and providing the guidance that helped me see myself so clearly. I've moved past the need to find who's right or wrong, and my mindset has shifted tremendously. I feel so much more mature — even my friends have noticed the change. I only wish we had met sooner!",
     name: "Khun Bam",
     role: "Investor",
-    img: "/img/testi-bam.jpg",
+    img: "/img/testi-sine.jpg",
     bandClass: "bg-ink/85",
   },
 ];
