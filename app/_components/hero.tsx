@@ -57,7 +57,7 @@ export function Hero() {
           <div className="md:col-span-5">
             <div className="relative overflow-hidden rounded-[2px] aspect-[4/5]">
               <Image
-                src="/img/about-portrait.jpg"
+                src="/img/about-portrait-v2.jpg"
                 alt="Coach Aor — Panida Thongsui"
                 fill
                 sizes="(max-width: 768px) 100vw, 560px"
