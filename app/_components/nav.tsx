@@ -36,7 +36,7 @@ export function Nav() {
         </ul>
         <a
           href="#booking"
-          className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-cream bg-cocoa hover:bg-cocoa-soft transition-colors px-4 md:px-6 py-2.5 md:py-3 rounded-full"
+          className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-cream bg-mocha hover:bg-mocha/85 transition-colors px-4 md:px-6 py-2.5 md:py-3 rounded-full"
         >
           Book a session
         </a>
