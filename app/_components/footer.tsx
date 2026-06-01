@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useLang, pick } from "./lang";
 
 // Brand-colored social icons (Instagram gradient, FB blue, TikTok, YouTube red)
 const SocialIcons = () => (
@@ -103,6 +106,7 @@ const SocialIcons = () => (
 );
 
 export function Footer() {
+  const { lang } = useLang();
   return (
     <footer className="bg-mocha text-cream py-8 md:py-10">
       <div className="mx-auto max-w-7xl px-6 md:px-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
@@ -130,7 +134,7 @@ export function Footer() {
         <div className="flex flex-col items-start md:items-end gap-2">
           <SocialIcons />
           <p className="text-[12px] md:text-sm text-cream/95 tracking-wide">
-            Follow Me On Social Media
+            {pick(lang, "Follow Me On Social Media", "ติดตามได้ที่โซเชียลมีเดีย")}
           </p>
         </div>
       </div>

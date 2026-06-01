@@ -1,12 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useLang, pick } from "./lang";
 
 export function Booking() {
+  const { lang } = useLang();
   return (
     <section id="booking" className="bg-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="order-2 md:order-1">
           <h2 className="font-display italic text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.05]">
-            Booking &amp; Consultation
+            {pick(lang, "Booking & Consultation", "การจองคิวปรึกษา")}
           </h2>
 
           <form
@@ -17,7 +21,7 @@ export function Booking() {
           >
             <label className="block">
               <span className="text-[11px] tracking-[0.22em] uppercase text-cocoa-soft block mb-2">
-                Name
+                {pick(lang, "Name", "ชื่อ")}
               </span>
               <input
                 type="text"
@@ -29,7 +33,7 @@ export function Booking() {
             </label>
             <label className="block">
               <span className="text-[11px] tracking-[0.22em] uppercase text-cocoa-soft block mb-2">
-                Email
+                {pick(lang, "Email", "อีเมล")}
               </span>
               <input
                 type="email"
@@ -41,7 +45,7 @@ export function Booking() {
             </label>
             <label className="block">
               <span className="text-[11px] tracking-[0.22em] uppercase text-cocoa-soft block mb-2">
-                Message
+                {pick(lang, "Message", "ข้อความ")}
               </span>
               <textarea
                 name="message"
@@ -55,7 +59,7 @@ export function Booking() {
               type="submit"
               className="mt-2 w-full md:w-auto md:min-w-[280px] px-9 py-3.5 text-[12px] tracking-[0.24em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
             >
-              Send
+              {pick(lang, "Send", "ส่ง")}
             </button>
           </form>
         </div>
@@ -71,7 +75,6 @@ export function Booking() {
               style={{ objectPosition: "left center" }}
               priority
             />
-            {/* Soft white wash on right side only */}
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-l from-cream via-cream/70 via-30% to-transparent"
@@ -79,9 +82,15 @@ export function Booking() {
 
             <div className="absolute inset-y-0 right-0 w-[62%] flex flex-col items-end justify-center px-5 md:px-7 text-right">
               <p className="text-cocoa text-lg md:text-xl lg:text-2xl leading-snug">
-                Ready to start your transformation
-                <br />
-                with Coach Aor?
+                {pick(
+                  lang,
+                  <>
+                    Ready to start your transformation
+                    <br />
+                    with Coach Aor?
+                  </>,
+                  <>สนใจนัดหมายจองคิวเซสชั่นกับโค้ชอ้อ</>,
+                )}
               </p>
               <div className="mt-5 flex gap-3 md:gap-4">
                 <div className="text-center">

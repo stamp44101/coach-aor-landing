@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
+import { LangProvider } from "./_components/lang";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -54,7 +55,9 @@ export default function RootLayout({
         } as React.CSSProperties
       }
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <LangProvider>{children}</LangProvider>
+      </body>
     </html>
   );
 }
