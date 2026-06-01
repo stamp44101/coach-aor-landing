@@ -247,7 +247,7 @@ export function Services() {
             className="object-cover"
             priority
           />
-          <div aria-hidden className="absolute inset-0 bg-black/15" />
+          <div aria-hidden className="absolute inset-0 bg-black/30" />
           <CardBody s={feature} lang={lang} layout="feature" />
         </article>
 
@@ -266,7 +266,7 @@ export function Services() {
                 style={{ objectPosition: s.imgPosition ?? "center" }}
                 className="object-cover"
               />
-              <div aria-hidden className="absolute inset-0 bg-black/20" />
+              <div aria-hidden className="absolute inset-0 bg-black/35" />
               <CardBody s={s} lang={lang} />
             </article>
           ))}

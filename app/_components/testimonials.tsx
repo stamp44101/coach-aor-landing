@@ -7,7 +7,9 @@ type Item = {
   name: { en: string; th: string };
   role: { en: string; th: string };
   img: string;
-  /** object-position so the face sits in the top 25–35% (above text overlay). */
+  /** backgroundSize — use "cover" or e.g. "auto 180%" to force vertical overflow so we can crop into the face. */
+  bgSize?: string;
+  /** backgroundPosition keeping the face in the top ~30% (above quote text). */
   focal: string;
 };
 
@@ -23,7 +25,8 @@ const items: Item[] = [
       th: "นักจิตบำบัด & เจ้าของกิจการส่วนตัว",
     },
     img: "/img/testi-pear.jpg",
-    focal: "center 28%",
+    bgSize: "auto 160%",
+    focal: "center 18%",
   },
   {
     quote: {
@@ -33,7 +36,8 @@ const items: Item[] = [
     name: { en: "Khun Pear", th: "คุณแพร" },
     role: { en: "Investor", th: "นักลงทุน" },
     img: "/img/testi-bam.jpg",
-    focal: "35% 25%",
+    bgSize: "auto 150%",
+    focal: "40% 15%",
   },
   {
     quote: {
@@ -43,7 +47,8 @@ const items: Item[] = [
     name: { en: "Khun Bam", th: "คุณแบม" },
     role: { en: "Investor", th: "นักลงทุน" },
     img: "/img/testi-sine.jpg",
-    focal: "65% 55%",
+    bgSize: "auto 200%",
+    focal: "62% 88%",
   },
 ];
 
@@ -74,8 +79,9 @@ export function Testimonials() {
                 className="absolute inset-0"
                 style={{
                   backgroundImage: `url('${t.img}')`,
-                  backgroundSize: "cover",
+                  backgroundSize: t.bgSize ?? "cover",
                   backgroundPosition: t.focal,
+                  backgroundRepeat: "no-repeat",
                   filter: "brightness(0.55) saturate(0.85)",
                 }}
               />
