@@ -5,8 +5,6 @@ type Item = {
   name: string;
   role: string;
   img: string;
-  // Tailwind class for the band background tint
-  bandClass: string;
 };
 
 const items: Item[] = [
@@ -16,7 +14,6 @@ const items: Item[] = [
     name: "Khun Sine",
     role: "Psychotherapist & Business Owner",
     img: "/img/testi-pear.jpg",
-    bandClass: "bg-mocha/85",
   },
   {
     quote:
@@ -24,7 +21,6 @@ const items: Item[] = [
     name: "Khun Pear",
     role: "Investor",
     img: "/img/testi-bam.jpg",
-    bandClass: "bg-tan-deep/90",
   },
   {
     quote:
@@ -32,13 +28,12 @@ const items: Item[] = [
     name: "Khun Bam",
     role: "Investor",
     img: "/img/testi-sine.jpg",
-    bandClass: "bg-ink/85",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="bg-cream-soft py-20 md:py-28">
+    <section id="testimonials" className="bg-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="mb-10 md:mb-14">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.05]">
@@ -52,28 +47,33 @@ export function Testimonials() {
               key={t.name}
               className="relative overflow-hidden rounded-[2px] aspect-[3/4]"
             >
+              {/* Dimmed photo — uses brightness filter so text stands out by contrast */}
               <Image
                 src={t.img}
                 alt={t.name}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover"
+                style={{ filter: "brightness(0.55) saturate(0.85)" }}
                 priority
               />
-              {/* Bottom-half tinted band per card */}
+              {/* Subtle bottom-to-top dim to give caption breathing room */}
               <div
                 aria-hidden
-                className={`absolute inset-x-0 bottom-0 h-[55%] ${t.bandClass}`}
+                className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent"
               />
-              <div className="absolute inset-x-0 bottom-0 h-[55%] p-6 md:p-7 text-cream text-center flex flex-col justify-center">
-                <blockquote className="text-[12.5px] md:text-[13px] leading-relaxed text-cream/95">
+              <div
+                className="absolute inset-0 p-6 md:p-8 text-white flex flex-col justify-end"
+                style={{ textShadow: "0 1px 12px rgba(0,0,0,0.55)" }}
+              >
+                <blockquote className="text-[13px] md:text-[13.5px] leading-relaxed text-white/95">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-5">
-                  <p className="font-display italic text-lg md:text-xl text-cream">
+                  <p className="font-display italic text-lg md:text-xl text-white">
                     {t.name},
                   </p>
-                  <p className="font-display italic text-xs md:text-[13px] text-cream/85">
+                  <p className="font-display italic text-xs md:text-[13px] text-white/90">
                     {t.role}
                   </p>
                 </figcaption>

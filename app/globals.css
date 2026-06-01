@@ -1,18 +1,35 @@
 @import "tailwindcss";
 
+/* ============================================================
+   COACH AOR CA — Brand CI tokens
+   Primary: white · cream · brown · dusty-blue (mocha)
+   Accent:  gold (greyish champagne)
+   Fonts:   Playfair Display (display), Inter (Latin body),
+            XB Niloofar (decorative — see note in layout.tsx)
+   ============================================================ */
 @theme {
+  /* WHITE / CREAM family */
+  --color-white: #ffffff;
   --color-cream: #f9f7ef;
   --color-cream-soft: #f5f1ed;
   --color-cream-deep: #ece4d2;
+
+  /* BROWN family */
   --color-tan: #b89378;
   --color-tan-deep: #89684b;
   --color-cocoa: #674328;
   --color-cocoa-soft: #856953;
+
+  /* DUSTY BLUE (ฟ้าตุ่น) — the only blue in the system */
   --color-mocha: #82939b;
-  --color-ink: #2b1e10;
+
+  /* GOLD accent (greyish champagne) */
+  --color-gold: #b9a378;
+  --color-gold-soft: #d5c39c;
 
   --font-display: "Playfair Display", "Times New Roman", serif;
   --font-body: "Inter", system-ui, sans-serif;
+  --font-decor: "XB Niloofar", "Playfair Display", serif;
 }
 
 html, body { background: var(--color-cream); color: var(--color-cocoa); }
@@ -23,6 +40,7 @@ body {
 }
 
 .font-display { font-family: var(--font-display); }
+.font-decor   { font-family: var(--font-decor); }
 
 /* Subtle scroll behavior */
 html { scroll-behavior: smooth; }
