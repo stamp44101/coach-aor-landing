@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coach Adi — Landing Page
 
-## Getting Started
+Landing page เวอร์ชัน placeholder สำหรับ Coach Adi (feminine empowerment coaching) — รูปและเนื้อหาจริงเติมทีหลัง
 
-First, run the development server:
+**Live preview:** จะอัปเดตเมื่อ deploy ผ่าน Vercel
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- **Next.js 16** (App Router + Turbopack)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4** (CSS-first config ใน `app/globals.css`)
+- ฟอนต์ Cormorant Garamond (display) + Plus Jakarta Sans (body) ผ่าน `next/font/google`
+- เป็น Server Components ล้วน — ไม่มี client JS
+
+## โครงเว็บ
+
+```
+app/
+├── layout.tsx          # Root layout + font setup
+├── page.tsx            # ประกอบ section ทุกตัว
+├── globals.css         # Tailwind + theme tokens (cream/tan/cocoa palette)
+└── _components/
+    ├── nav.tsx           # Sticky header + Book a call CTA
+    ├── hero.tsx          # Hero + quote/about block
+    ├── services.tsx      # 5 service cards (1:1, retreat, course, circle, discovery)
+    ├── cta-strip.tsx     # "Ready to start your transformation"
+    ├── testimonials.tsx  # 3 testimonial cards
+    ├── booking.tsx       # Booking & consultation form
+    ├── footer.tsx        # Dark footer + social
+    └── placeholder.tsx   # Gradient block ใช้แทนรูปจริง
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## วิธีเปลี่ยนรูปจาก placeholder เป็นรูปจริง
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ทุก placeholder ใน `_components/*.tsx` ใช้ `<Placeholder ratio="..." label="..." />`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+แทนที่ด้วย Next.js `<Image>`:
 
-## Learn More
+```tsx
+import Image from "next/image";
+// ก่อน
+<Placeholder ratio="5/7" label="HERO_PORTRAIT.jpg" />
+// หลัง
+<Image src="/hero-portrait.jpg" alt="..." width={800} height={1120} className="rounded-[2px]" />
+```
 
-To learn more about Next.js, take a look at the following resources:
+วางไฟล์รูปไว้ใน `public/` แล้ว reference ด้วย `/filename.ext`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## รัน local
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run start      # production server
+```
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push commit ไปที่ `main` (หรือ `master`) → Vercel จะ auto-deploy preview ทุก branch + promote main เป็น production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT — © 2026 stamp44101
