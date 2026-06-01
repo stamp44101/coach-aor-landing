@@ -28,6 +28,7 @@
   --color-gold-soft: #d5c39c;
 
   --font-display: "Playfair Display", "Times New Roman", serif;
+  --font-display-th: "Prompt", "Noto Sans Thai", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-decor: "XB Niloofar", "Playfair Display", serif;
 }
@@ -39,8 +40,9 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.font-display { font-family: var(--font-display); }
-.font-decor   { font-family: var(--font-decor); }
+.font-display    { font-family: var(--font-display); }
+.font-display-th { font-family: var(--font-display-th); font-style: normal; letter-spacing: -0.01em; }
+.font-decor      { font-family: var(--font-decor); }
 
 /* Subtle scroll behavior */
 html { scroll-behavior: smooth; }

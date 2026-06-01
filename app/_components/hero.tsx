@@ -39,7 +39,7 @@ export function Hero() {
                 Feminine Power
               </h1>
             ) : (
-              <h1 className="font-display italic text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] leading-[1.05] text-cocoa">
+              <h1 className="font-display-th text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.15] text-cocoa font-medium">
                 ปลดปล่อยพลังภายใน
                 <br />
                 และศักยภาพความเป็นหญิงของคุณ
@@ -77,7 +77,9 @@ export function Hero() {
         id="about"
         className="mx-auto max-w-7xl px-6 md:px-12 pb-20 md:pb-28"
       >
-        <h2 className="font-display italic text-3xl md:text-4xl text-cocoa mb-8 md:mb-10">
+        <h2
+          className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl text-cocoa mb-8 md:mb-10`}
+        >
           {pick(lang, "About Coach Aor", "ประวัติโค้ชอ้อ")}
         </h2>
         <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">

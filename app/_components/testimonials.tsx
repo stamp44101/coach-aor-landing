@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useLang, pick } from "./lang";
 
 type Item = {
@@ -8,6 +7,8 @@ type Item = {
   name: { en: string; th: string };
   role: { en: string; th: string };
   img: string;
+  /** object-position so the face sits in the top 25–35% (above text overlay). */
+  focal: string;
 };
 
 const items: Item[] = [
@@ -22,6 +23,7 @@ const items: Item[] = [
       th: "นักจิตบำบัด & เจ้าของกิจการส่วนตัว",
     },
     img: "/img/testi-pear.jpg",
+    focal: "center 28%",
   },
   {
     quote: {
@@ -31,6 +33,7 @@ const items: Item[] = [
     name: { en: "Khun Pear", th: "คุณแพร" },
     role: { en: "Investor", th: "นักลงทุน" },
     img: "/img/testi-bam.jpg",
+    focal: "35% 25%",
   },
   {
     quote: {
@@ -40,6 +43,7 @@ const items: Item[] = [
     name: { en: "Khun Bam", th: "คุณแบม" },
     role: { en: "Investor", th: "นักลงทุน" },
     img: "/img/testi-sine.jpg",
+    focal: "65% 55%",
   },
 ];
 
@@ -49,7 +53,9 @@ export function Testimonials() {
     <section id="testimonials" className="bg-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="mb-10 md:mb-14">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.05]">
+          <h2
+            className={`${lang === "th" ? "font-display-th font-medium" : "font-display"} text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
+          >
             {pick(lang, "Testimonials", "เสียงจากผู้ที่เคยรับการโค้ช")}
           </h2>
         </div>
@@ -60,18 +66,23 @@ export function Testimonials() {
               key={t.name.en}
               className="relative overflow-hidden rounded-[2px] aspect-[3/4]"
             >
-              <Image
-                src={t.img}
-                alt={t.name[lang]}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover"
-                style={{ filter: "brightness(0.55) saturate(0.85)" }}
-                priority
+              {/* Use background-image (not next/image) so we can zoom/crop into the face precisely.
+                  backgroundSize 'cover' + backgroundPosition gives full control of focal point. */}
+              <div
+                role="img"
+                aria-label={t.name[lang]}
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: `url('${t.img}')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: t.focal,
+                  filter: "brightness(0.55) saturate(0.85)",
+                }}
               />
+              {/* Stronger gradient — keeps quote legible, leaves top 40% clean for the face */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-transparent"
               />
               <div
                 className="absolute inset-0 p-6 md:p-8 text-white flex flex-col justify-end"

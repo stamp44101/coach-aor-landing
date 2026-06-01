@@ -168,7 +168,7 @@ function CardBody({
     >
       <div className="text-center">
         <h3
-          className={`font-display italic leading-[1.05] ${layout === "feature" ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+          className={`leading-[1.1] ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${layout === "feature" ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
         >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
@@ -230,7 +230,9 @@ export function Services() {
   return (
     <section id="services" className="bg-tan-deep py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <h2 className="font-display italic text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-cream mb-10 md:mb-14">
+        <h2
+          className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-cream mb-10 md:mb-14`}
+        >
           {pick(lang, "Our Services", "บริการต่าง ๆ ของ Coach Aor CA")}
         </h2>
 
@@ -272,7 +274,9 @@ export function Services() {
 
         {/* === "Ready to start" — plain text on tan-deep, no box === */}
         <div className="mt-14 md:mt-20 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-          <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-cream leading-[1.15] max-w-3xl">
+          <h3
+            className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl lg:text-5xl text-cream leading-[1.2] max-w-3xl`}
+          >
             {pick(
               lang,
               <>

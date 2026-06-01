@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Noto_Sans_Thai } from "next/font/google";
+import { Playfair_Display, Inter, Noto_Sans_Thai, Prompt } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "./_components/lang";
 
@@ -25,6 +25,16 @@ const thai = Noto_Sans_Thai({
   display: "swap",
 });
 
+// Thai sans-serif unlooped (ไร้หัว) for large headlines —
+// pairs visually with Playfair Display in EN.
+const promptThai = Prompt({
+  subsets: ["thai", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-thai-display-loaded",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Coach Aor CA — Step Into Your Feminine Power",
   description:
@@ -47,10 +57,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${thai.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${thai.variable} ${promptThai.variable} h-full antialiased`}
       style={
         {
           "--font-display": `var(--font-display-loaded), "Playfair Display", "Times New Roman", serif`,
+          "--font-display-th": `var(--font-thai-display-loaded), "Prompt", "Noto Sans Thai", system-ui, sans-serif`,
           "--font-body": `var(--font-body-loaded), var(--font-thai-loaded), system-ui, sans-serif`,
         } as React.CSSProperties
       }

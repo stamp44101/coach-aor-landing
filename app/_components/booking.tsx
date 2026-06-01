@@ -9,7 +9,9 @@ export function Booking() {
     <section id="booking" className="bg-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="order-2 md:order-1">
-          <h2 className="font-display italic text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.05]">
+          <h2
+            className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
+          >
             {pick(lang, "Booking & Consultation", "การจองคิวปรึกษา")}
           </h2>
 
