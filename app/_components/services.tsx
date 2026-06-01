@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useLang, pick, type Lang } from "./lang";
 
-type Bullet = { en: string; th?: string };
+type Bullet = {
+  en: string;
+  /** translation — shown only when lang === "th" (replaces en). */
+  th?: string;
+  /** secondary text — always shown UNDER the main line regardless of lang. */
+  subtitle?: string;
+};
 type Service = {
   title: { en: string; th: string };
   description: { en: string; th: string };
@@ -76,11 +82,11 @@ const cards: Service[] = [
     bullets: [
       {
         en: "Awaken Feminine Energy",
-        th: "ปลุกพลังความเป็นหญิง เนรมิตชีวิตในฝัน",
+        subtitle: "ปลุกพลังความเป็นหญิง เนรมิตชีวิตในฝัน",
       },
       {
         en: "High Value Woman",
-        th: "ตระหนักรู้คุณค่าในตัวเอง ปลดล็อคศักยภาพด้านความสำเร็จ ความรัก & การเงิน",
+        subtitle: "ตระหนักรู้คุณค่าในตัวเอง ปลดล็อคศักยภาพด้านความสำเร็จ ความรัก & การเงิน",
       },
     ],
     img: "/img/service-online-course.jpg",
@@ -181,7 +187,13 @@ function CardBody({
         </p>
       </div>
 
-      <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-end">
+      <div
+        className={`mt-6 md:mt-8 mx-auto w-fit max-w-full flex flex-col items-center justify-center gap-5 ${
+          layout === "feature"
+            ? "md:flex-row md:items-end md:gap-10 lg:gap-14"
+            : ""
+        }`}
+      >
         <div>
           {s.topics && (
             <ul className="space-y-1 text-[13px] leading-snug">
@@ -199,10 +211,12 @@ function CardBody({
                 <li key={b.en} className="flex gap-2 items-start">
                   <span className="opacity-70 mt-0.5">·</span>
                   <div>
-                    <span className="block">{b.en}</span>
-                    {b.th && (
+                    <span className="block">
+                      {lang === "th" && b.th ? b.th : b.en}
+                    </span>
+                    {b.subtitle && (
                       <span className="block text-[12px] opacity-80 leading-snug">
-                        {b.th}
+                        {b.subtitle}
                       </span>
                     )}
                   </div>
@@ -211,7 +225,11 @@ function CardBody({
             </ul>
           )}
         </div>
-        <div className="flex flex-col items-end gap-4 text-right">
+        <div
+          className={`flex flex-col items-center gap-4 text-center ${
+            layout === "feature" ? "md:items-end md:text-right" : ""
+          }`}
+        >
           <p
             className="text-[12px] md:text-[13px] italic leading-snug whitespace-pre-line"
             style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}

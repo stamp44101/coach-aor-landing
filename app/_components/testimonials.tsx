@@ -82,13 +82,13 @@ export function Testimonials() {
                   backgroundSize: t.bgSize ?? "cover",
                   backgroundPosition: t.focal,
                   backgroundRepeat: "no-repeat",
-                  filter: "brightness(0.55) saturate(0.85)",
+                  filter: "brightness(0.7) saturate(0.85)",
                 }}
               />
               {/* Stronger gradient — keeps quote legible, leaves top 40% clean for the face */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent"
               />
               <div
                 className="absolute inset-0 p-6 md:p-8 text-white flex flex-col justify-end"

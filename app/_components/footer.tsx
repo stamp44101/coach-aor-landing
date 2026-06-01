@@ -55,7 +55,7 @@ const SocialIcons = () => (
         className="block"
       >
         <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
-          <circle cx="16" cy="16" r="16" fill="#1877F2" />
+          <rect x="0" y="0" width="32" height="32" rx="8" fill="#1877F2" />
           <path
             d="M18.5 26V17.5h2.85l.43-3.3H18.5v-2.11c0-.96.27-1.61 1.65-1.61h1.76V7.54a23.4 23.4 0 0 0-2.57-.13c-2.55 0-4.3 1.55-4.3 4.4v2.46H12v3.3h3.04V26h3.46z"
             fill="#fff"
@@ -72,7 +72,7 @@ const SocialIcons = () => (
         className="block"
       >
         <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
-          <rect x="0" y="0" width="32" height="32" rx="6" fill="#000" />
+          <rect x="0" y="0" width="32" height="32" rx="8" fill="#000" />
           <path
             d="M21.5 9.5c.4 2.4 1.9 4.3 4.5 4.7v2.7c-1.7 0-3.3-.4-4.5-1.2v6.1c0 4-3.3 7.1-7.4 7-3.5-.1-6.4-3-6.4-6.5 0-3.6 3.1-6.5 6.8-6.5.4 0 .7 0 1.1.1v3.1c-.4-.1-.7-.2-1.1-.2-1.7 0-3.2 1.4-3.2 3.1 0 1.6 1.2 3 3.1 3.1 1.7 0 3.1-1.4 3.1-3.1V6h3.5c.1.9.1 2.3.5 3.5z"
             fill="#fff"
@@ -97,8 +97,8 @@ const SocialIcons = () => (
         className="block"
       >
         <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
-          <rect x="0" y="6" width="32" height="20" rx="5" fill="#FF0000" />
-          <path d="M13.5 11l8 5-8 5V11z" fill="#fff" />
+          <rect x="0" y="0" width="32" height="32" rx="8" fill="#FF0000" />
+          <path d="M13.5 10.5l9 5.5-9 5.5v-11z" fill="#fff" />
         </svg>
       </a>
     </li>
