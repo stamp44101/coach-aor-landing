@@ -8,20 +8,19 @@ export function Hero() {
         id="top"
         className="relative isolate overflow-hidden mx-auto max-w-7xl px-6 md:px-12 pt-12 md:pt-20 pb-20 md:pb-28"
       >
-        {/* Subtle background wash */}
+        {/* Floral lily wash (sourced from published Canva) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 opacity-25"
+          className="pointer-events-none absolute inset-0 -z-10"
           style={{
-            backgroundImage: "url(/img/hero-portrait.jpg)",
+            backgroundImage: "url(/img/hero-bg-lily.jpg)",
             backgroundSize: "cover",
             backgroundPosition: "right center",
-            filter: "blur(8px)",
           }}
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cream via-cream/80 to-cream"
+          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-cream/40 via-cream/55 to-cream"
         />
 
         <div className="text-center max-w-4xl mx-auto">
@@ -58,7 +57,7 @@ export function Hero() {
           <div className="md:col-span-5">
             <div className="relative overflow-hidden rounded-[2px] aspect-[4/5]">
               <Image
-                src="/img/hero-portrait.jpg"
+                src="/img/about-portrait.jpg"
                 alt="Coach Aor — Panida Thongsui"
                 fill
                 sizes="(max-width: 768px) 100vw, 560px"

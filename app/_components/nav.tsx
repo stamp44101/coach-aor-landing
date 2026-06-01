@@ -12,7 +12,7 @@ export function Nav() {
       <nav className="mx-auto max-w-7xl flex items-center justify-between px-6 md:px-12 h-16 md:h-20">
         <a href="#top" className="flex items-center gap-3 text-cocoa">
           <Image
-            src="/img/logo-dark.png"
+            src="/img/logo-ca.png"
             alt="Coach Aor CA"
             width={64}
             height={64}

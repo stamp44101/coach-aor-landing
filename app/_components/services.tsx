@@ -103,7 +103,7 @@ const services: Service[] = [
 
 export function Services() {
   return (
-    <section id="services" className="bg-tan-deep/95 text-cream py-20 md:py-28">
+    <section id="services" className="bg-tan-deep text-cream py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="mb-10 md:mb-14">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-cream">
@@ -116,7 +116,7 @@ export function Services() {
             <article
               key={s.title}
               className={`relative overflow-hidden rounded-[2px] ${s.span ?? ""} ${
-                s.feature ? "min-h-[420px] md:min-h-[520px]" : "min-h-[480px] md:min-h-[600px] aspect-[5/6] md:aspect-auto"
+                s.feature ? "min-h-[400px] md:min-h-[480px]" : "min-h-[460px] md:min-h-[560px] aspect-[5/6] md:aspect-auto"
               }`}
             >
               <Image
@@ -128,65 +128,75 @@ export function Services() {
                 className="object-cover"
                 priority
               />
-              {/* Dark gradient overlay for legibility */}
+              {/* Softer overlay — let photo breathe like Canva */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-b from-cocoa/35 via-cocoa/45 to-cocoa/75"
+                className="absolute inset-0 bg-cocoa/25"
               />
 
-              {/* Feature card layout: bullets left, title center */}
+              {/* Feature card layout: title centered-right, bullets bottom-left */}
               {s.feature ? (
-                <div className="relative h-full flex flex-col md:flex-row p-7 md:p-10 gap-6">
-                  <div className="md:w-1/3 flex flex-col justify-center">
-                    {s.topics && (
-                      <ul className="space-y-2 text-[13px] md:text-sm text-cream">
-                        {s.topics.map((t) => (
-                          <li key={t} className="flex gap-2 items-start">
-                            <span className="text-cream/70 mt-0.5">·</span>
-                            <span>{t}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                  <div className="md:w-2/3 flex flex-col items-center text-center justify-center">
-                    <h3 className="font-display italic text-4xl md:text-5xl lg:text-6xl text-cream leading-tight">
+                <div className="relative h-full p-7 md:p-10">
+                  {/* Title block — centered */}
+                  <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col items-center text-center px-6">
+                    <h3 className="font-display italic text-4xl md:text-5xl lg:text-6xl text-cream leading-tight drop-shadow-sm">
                       {s.title}
                     </h3>
-                    <p className="mt-4 text-[14px] md:text-[15px] text-cream/90 max-w-md leading-relaxed">
+                    <p className="mt-3 text-[14px] md:text-[15px] text-cream max-w-md leading-relaxed">
                       {s.description}
                     </p>
-                    <div className="mt-6 flex flex-col md:flex-row items-center gap-4">
-                      <p className="text-[11px] tracking-[0.22em] uppercase text-cream/85">
-                        {s.meta}
-                      </p>
-                      <a
-                        href="#booking"
-                        className="text-[11px] tracking-[0.24em] uppercase px-5 py-2.5 rounded-full bg-mocha hover:bg-mocha/85 text-cream transition-colors whitespace-nowrap"
-                      >
-                        Book a session
-                      </a>
-                    </div>
+                  </div>
+
+                  {/* Bullets — bottom-left */}
+                  {s.topics && (
+                    <ul className="absolute left-7 md:left-10 bottom-7 md:bottom-10 space-y-1 text-[11.5px] md:text-[12.5px] text-cream max-w-[34%]">
+                      {s.topics.map((t) => (
+                        <li key={t} className="flex gap-1.5 items-start">
+                          <span className="text-cream/85 mt-0.5">·</span>
+                          <span>{t}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Meta + button — bottom-right */}
+                  <div className="absolute right-7 md:right-10 bottom-7 md:bottom-10 flex flex-col items-end gap-3">
+                    <p className="text-[10.5px] tracking-[0.2em] uppercase text-cream/95 text-right">
+                      {s.meta}
+                    </p>
+                    <a
+                      href="#booking"
+                      className="text-[10.5px] tracking-[0.24em] uppercase px-5 py-2.5 rounded-full bg-cream hover:bg-cream/90 text-cocoa transition-colors whitespace-nowrap"
+                    >
+                      Book a session
+                    </a>
                   </div>
                 </div>
               ) : (
                 <div className="relative h-full flex flex-col p-7 md:p-9">
-                  <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-cream leading-tight text-center mt-2">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 text-[13.5px] md:text-[14px] text-cream/90 leading-relaxed text-center max-w-md mx-auto">
-                    {s.description}
-                  </p>
+                  {/* Title + description — upper centered */}
+                  <div className="mt-2 md:mt-4 text-center px-2">
+                    <h3 className="font-display italic text-3xl md:text-4xl lg:text-[2.75rem] text-cream leading-tight drop-shadow-sm">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 text-[12.5px] md:text-[13px] text-cream leading-relaxed max-w-sm mx-auto">
+                      {s.description}
+                    </p>
+                  </div>
 
+                  {/* Spacer pushes bullets / footer to bottom */}
+                  <div className="flex-1" />
+
+                  {/* Bullets — bottom-left, sized for max-w[55%] */}
                   {s.bullets && (
-                    <ul className="mt-5 space-y-1.5 text-[13px] text-cream/95 max-w-md mx-auto w-full">
+                    <ul className="space-y-1 text-[11.5px] md:text-[12px] text-cream max-w-[55%] mb-3">
                       {s.bullets.map((b) => (
-                        <li key={b.en} className="flex gap-2 items-start">
-                          <span className="text-cream/65 mt-0.5">·</span>
+                        <li key={b.en} className="flex gap-1.5 items-start">
+                          <span className="text-cream/85 mt-0.5">·</span>
                           <div>
                             <span className="block">{b.en}</span>
                             {b.th && (
-                              <span className="block text-[12px] text-cream/70 leading-snug font-[var(--font-thai)]">
+                              <span className="block text-[10.5px] text-cream/80 leading-snug font-[var(--font-thai)]">
                                 {b.th}
                               </span>
                             )}
@@ -196,13 +206,14 @@ export function Services() {
                     </ul>
                   )}
 
-                  <div className="mt-auto pt-6 flex items-end justify-between gap-4">
-                    <p className="text-[11px] tracking-[0.22em] uppercase text-cream/85 max-w-[55%] leading-snug">
+                  {/* Meta + button — bottom-right, absolute so it overlaps bullet column gap */}
+                  <div className="absolute right-7 md:right-9 bottom-7 md:bottom-9 flex flex-col items-end gap-2.5 max-w-[42%]">
+                    <p className="text-[10px] tracking-[0.2em] uppercase text-cream/95 text-right leading-snug">
                       {s.meta}
                     </p>
                     <a
                       href="#booking"
-                      className="text-[11px] tracking-[0.24em] uppercase px-4 py-2.5 rounded-full bg-mocha hover:bg-mocha/85 text-cream transition-colors whitespace-nowrap"
+                      className="text-[10.5px] tracking-[0.24em] uppercase px-4 py-2.5 rounded-full bg-cream hover:bg-cream/90 text-cocoa transition-colors whitespace-nowrap"
                     >
                       Book a session
                     </a>

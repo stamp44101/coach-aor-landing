@@ -1,12 +1,22 @@
 import Image from "next/image";
 
-const items = [
+type Item = {
+  quote: string;
+  name: string;
+  role: string;
+  img: string;
+  // Tailwind class for the band background tint
+  bandClass: string;
+};
+
+const items: Item[] = [
   {
     quote:
       "I'm so grateful we met. I used to be paralyzed by the fear of building a business and investing my effort. Today, I've found the courage to take action and turn my vision into reality. I now wake up every day excited to live my life to the fullest.",
     name: "Khun Sine",
     role: "Psychotherapist & Business Owner",
     img: "/img/testi-sine.jpg",
+    bandClass: "bg-mocha/85",
   },
   {
     quote:
@@ -14,6 +24,7 @@ const items = [
     name: "Khun Pear",
     role: "Investor",
     img: "/img/testi-pear.jpg",
+    bandClass: "bg-tan-deep/90",
   },
   {
     quote:
@@ -21,6 +32,7 @@ const items = [
     name: "Khun Bam",
     role: "Investor",
     img: "/img/testi-bam.jpg",
+    bandClass: "bg-ink/85",
   },
 ];
 
@@ -48,13 +60,13 @@ export function Testimonials() {
                 className="object-cover"
                 priority
               />
-              {/* Gradient overlay for legibility */}
+              {/* Bottom-half tinted band per card */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-b from-transparent via-cocoa/15 to-cocoa/70"
+                className={`absolute inset-x-0 bottom-0 h-[55%] ${t.bandClass}`}
               />
-              <div className="absolute inset-x-0 bottom-0 p-6 md:p-7 text-cream text-center">
-                <blockquote className="text-[13px] md:text-[13.5px] leading-relaxed text-cream/95">
+              <div className="absolute inset-x-0 bottom-0 h-[55%] p-6 md:p-7 text-cream text-center flex flex-col justify-center">
+                <blockquote className="text-[12.5px] md:text-[13px] leading-relaxed text-cream/95">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-5">
