@@ -116,8 +116,21 @@ export function Booking() {
                 </div>
               </div>
               <p className="mt-5 text-cocoa text-base md:text-lg font-display italic">
-                Line Official : @coachaorca
+                <a
+                  href="https://lin.ee/ZVRHOhSu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  Line Official : @coachaor.ca
+                </a>
               </p>
+              <a
+                href="mailto:soulfulwomens@gmail.com"
+                className="mt-1 text-cocoa-soft text-xs md:text-sm tracking-wide hover:text-cocoa transition-colors"
+              >
+                soulfulwomens@gmail.com
+              </a>
             </div>
           </div>
         </div>

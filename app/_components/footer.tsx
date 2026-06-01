@@ -4,7 +4,13 @@ import Image from "next/image";
 const SocialIcons = () => (
   <ul className="flex items-center gap-3">
     <li>
-      <a href="#" aria-label="Instagram" className="block">
+      <a
+        href="https://www.instagram.com/coachaor.ca/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="block"
+      >
         <svg
           viewBox="0 0 32 32"
           width="32"
@@ -38,7 +44,13 @@ const SocialIcons = () => (
       </a>
     </li>
     <li>
-      <a href="#" aria-label="Facebook" className="block">
+      <a
+        href="https://www.facebook.com/coachaor.ca/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        className="block"
+      >
         <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
           <circle cx="16" cy="16" r="16" fill="#1877F2" />
           <path
@@ -49,7 +61,13 @@ const SocialIcons = () => (
       </a>
     </li>
     <li>
-      <a href="#" aria-label="TikTok" className="block">
+      <a
+        href="https://www.tiktok.com/@coachaor.ca"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+        className="block"
+      >
         <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
           <rect x="0" y="0" width="32" height="32" rx="6" fill="#000" />
           <path
@@ -68,7 +86,13 @@ const SocialIcons = () => (
       </a>
     </li>
     <li>
-      <a href="#" aria-label="YouTube" className="block">
+      <a
+        href="https://www.youtube.com/@CoachAorCA"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+        className="block"
+      >
         <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden>
           <rect x="0" y="6" width="32" height="20" rx="5" fill="#FF0000" />
           <path d="M13.5 11l8 5-8 5V11z" fill="#fff" />
