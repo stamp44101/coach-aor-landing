@@ -53,7 +53,7 @@ export function Booking() {
             </label>
             <button
               type="submit"
-              className="mt-2 w-full md:w-auto md:min-w-[280px] px-9 py-3.5 text-[12px] tracking-[0.24em] uppercase text-cream bg-tan hover:bg-tan-deep transition-colors rounded-full"
+              className="mt-2 w-full md:w-auto md:min-w-[280px] px-9 py-3.5 text-[12px] tracking-[0.24em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
             >
               Send
             </button>
