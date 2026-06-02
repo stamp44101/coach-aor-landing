@@ -52,7 +52,7 @@ const feature: Service = {
   topics: coachingTopics,
   img: "/img/service-private-coaching.jpg",
   // Focal: heads at the very top edge — hair just touches/slightly cropped per Canva ref.
-  imgPosition: "center 77%",
+  imgPosition: "center 42%",
 };
 
 const cards: Service[] = [
