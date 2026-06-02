@@ -33,13 +33,13 @@ export function Hero() {
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="text-center max-w-4xl mx-auto">
             {lang === "en" ? (
-              <h1 className="font-display italic font-bold text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
+              <h1 className="font-display italic font-normal text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
                 Step Into Your
                 <br />
                 Feminine Power
               </h1>
             ) : (
-              <h1 className="font-display-th text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.15] text-cocoa font-bold">
+              <h1 className="font-display-th text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.15] text-cocoa font-medium">
                 ปลดปล่อยพลังภายใน
                 <br />
                 และศักยภาพความเป็นหญิงของคุณ
