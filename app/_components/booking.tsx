@@ -10,7 +10,7 @@ export function Booking() {
       id="booking"
       className="relative bg-cream py-20 md:py-28 overflow-hidden"
     >
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-12 md:gap-16 items-stretch md:items-end">
         {/* LEFT — form */}
         <div className="order-2 md:order-1">
           <h2
@@ -90,8 +90,8 @@ export function Booking() {
             className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] bg-gradient-to-r from-cream via-cream/85 to-transparent"
           />
 
-          {/* Text + QR + LINE id — centered within the whitespace on the LEFT half of the photo container */}
-          <div className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] flex flex-col items-center justify-center text-center gap-5 md:gap-6 p-4 md:p-6">
+          {/* Text + QR + LINE id — bottom-aligned within the whitespace so the LINE id sits level with the SEND button. */}
+          <div className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] flex flex-col items-center justify-end text-center gap-5 md:gap-6 p-4 md:p-7">
             <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug">
               {pick(
                 lang,
