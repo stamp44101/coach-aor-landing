@@ -57,7 +57,7 @@ export function Hero() {
             </p>
             <a
               href="#booking"
-              className="inline-block mt-8 md:mt-10 px-10 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors rounded-full"
+              className="inline-block mt-8 md:mt-10 px-10 py-4 text-[13px] md:text-sm tracking-[0.28em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors rounded-full"
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
@@ -163,7 +163,7 @@ export function Hero() {
             </div>
             <a
               href="#booking"
-              className="inline-block self-start mt-8 px-9 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
+              className="inline-block self-start mt-8 px-9 py-4 text-[13px] md:text-sm tracking-[0.28em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
