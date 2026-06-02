@@ -63,7 +63,7 @@ export function Booking() {
             </label>
             <button
               type="submit"
-              className="mt-2 w-full px-9 py-4 text-sm md:text-[15px] tracking-[0.24em] uppercase text-cream bg-cocoa hover:bg-cocoa-soft transition-colors rounded-full"
+              className="mt-2 w-full px-9 py-4 text-sm md:text-[15px] tracking-[0.24em] uppercase text-cream bg-cocoa hover:bg-cocoa-soft cursor-pointer transition-colors rounded-full"
             >
               {pick(lang, "Send", "ส่ง")}
             </button>

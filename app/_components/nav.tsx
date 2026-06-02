@@ -55,7 +55,7 @@ export function Nav() {
               <button
                 type="button"
                 onClick={() => setLang("th")}
-                className={`px-2 transition-colors ${lang === "th" ? "text-cocoa font-medium" : "text-cocoa-soft hover:text-cocoa"}`}
+                className={`px-2 cursor-pointer transition-colors ${lang === "th" ? "text-cocoa font-medium" : "text-cocoa-soft hover:text-cocoa"}`}
               >
                 TH
               </button>
@@ -63,7 +63,7 @@ export function Nav() {
               <button
                 type="button"
                 onClick={() => setLang("en")}
-                className={`px-2 transition-colors ${lang === "en" ? "text-cocoa font-medium" : "text-cocoa-soft hover:text-cocoa"}`}
+                className={`px-2 cursor-pointer transition-colors ${lang === "en" ? "text-cocoa font-medium" : "text-cocoa-soft hover:text-cocoa"}`}
               >
                 EN
               </button>
@@ -84,7 +84,7 @@ export function Nav() {
             aria-label={pick(lang, "Open menu", "เปิดเมนู")}
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            className="md:hidden inline-flex flex-col gap-[5px] p-2 -mr-2"
+            className="md:hidden inline-flex flex-col gap-[5px] p-2 -mr-2 cursor-pointer"
           >
             <span className="block w-6 h-[2px] bg-cocoa" />
             <span className="block w-6 h-[2px] bg-cocoa" />
@@ -105,7 +105,7 @@ export function Nav() {
           type="button"
           aria-label={pick(lang, "Close menu", "ปิดเมนู")}
           onClick={() => setOpen(false)}
-          className="absolute inset-0 bg-cocoa/40 backdrop-blur-sm"
+          className="absolute inset-0 bg-cocoa/40 backdrop-blur-sm cursor-pointer"
         />
         {/* Panel */}
         <aside
@@ -127,7 +127,7 @@ export function Nav() {
               type="button"
               aria-label={pick(lang, "Close menu", "ปิดเมนู")}
               onClick={() => setOpen(false)}
-              className="p-2 -mr-2 text-cocoa text-2xl leading-none"
+              className="p-2 -mr-2 text-cocoa text-2xl leading-none cursor-pointer"
             >
               ×
             </button>
@@ -152,7 +152,7 @@ export function Nav() {
             <button
               type="button"
               onClick={() => setLang("th")}
-              className={`px-3 py-1 rounded-full border transition-colors ${
+              className={`px-3 py-1 rounded-full border cursor-pointer transition-colors ${
                 lang === "th"
                   ? "bg-cocoa text-cream border-cocoa"
                   : "text-cocoa border-cocoa/40"
@@ -163,7 +163,7 @@ export function Nav() {
             <button
               type="button"
               onClick={() => setLang("en")}
-              className={`px-3 py-1 rounded-full border transition-colors ${
+              className={`px-3 py-1 rounded-full border cursor-pointer transition-colors ${
                 lang === "en"
                   ? "bg-cocoa text-cream border-cocoa"
                   : "text-cocoa border-cocoa/40"

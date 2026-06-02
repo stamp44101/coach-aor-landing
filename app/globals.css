@@ -56,6 +56,15 @@ body {
 /* Headlines look better with balanced line lengths (Tailwind also exposes `text-balance`). */
 h1, h2, h3 { text-wrap: balance; }
 
+/* Affordance: every clickable element should look clickable.
+   Tailwind preflight intentionally removes the UA pointer cursor on <button>,
+   so we put it back globally. Disabled buttons fall back to not-allowed. */
+button:not(:disabled),
+[role="button"]:not(:disabled),
+summary { cursor: pointer; }
+button:disabled,
+[role="button"][aria-disabled="true"] { cursor: not-allowed; }
+
 .font-display    { font-family: var(--font-display); }
 .font-display-th { font-family: var(--font-display-th); font-style: normal; letter-spacing: -0.01em; }
 .font-decor      { font-family: var(--font-decor); }
