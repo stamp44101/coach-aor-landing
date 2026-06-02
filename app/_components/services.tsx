@@ -260,8 +260,8 @@ function CardBody({
           </p>
         </div>
 
-        {/* Bottom row: bullets left · meta+CTA right (avoids overlapping people in the bg) */}
-        <div className="mt-auto flex items-end justify-between gap-6 md:gap-10">
+        {/* Bottom row: bullets / meta+CTA aligned to the SAME width as the subtitle above (max-w-xl mx-auto). */}
+        <div className="mt-auto max-w-xl mx-auto w-full flex items-end justify-between gap-6 md:gap-10">
           <div className="self-end">{bulletsBlock}</div>
           <div className="self-end">{metaCtaBlock}</div>
         </div>
@@ -269,12 +269,15 @@ function CardBody({
     );
   }
 
+  // Stacked card (2×2 grid) — absolute-positioned layout per design spec.
+  // Title+desc float at top 35%, bottom row pins to bottom-left / bottom-right corners.
   return (
     <div
-      className="relative h-full flex flex-col text-cream px-6 md:px-8 py-8 md:py-10 justify-between gap-6"
+      className="absolute inset-0 text-cream"
       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
     >
-      <div className="text-center">
+      {/* Center title + description — absolute at top 35% */}
+      <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] text-center">
         <h3
           className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl lg:text-5xl`}
         >
@@ -284,15 +287,49 @@ function CardBody({
             </span>
           ))}
         </h3>
-        <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-md mx-auto text-pretty">
+        <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-pretty font-body">
           {s.description[lang]}
         </p>
       </div>
 
-      {bulletsBlock && (
-        <div className="mx-auto w-fit max-w-full">{bulletsBlock}</div>
-      )}
-      {metaCtaBlock}
+      {/* Bottom row — absolute at bottom-30 left-30 right-30 */}
+      <div className="absolute bottom-[28px] md:bottom-[30px] left-[24px] md:left-[30px] right-[24px] md:right-[30px] flex items-end justify-between gap-5">
+        {/* Bullets bottom-left */}
+        {(s.topics || s.bullets) ? (
+          <ul className="list-disc list-outside pl-4 space-y-1 text-[12.5px] md:text-[13px] leading-snug marker:opacity-90 font-body">
+            {s.topics?.map((t) => (
+              <li key={t.en}>{t[lang]}</li>
+            ))}
+            {s.bullets?.map((b) => (
+              <li key={b.en}>
+                <span className="block">
+                  {lang === "th" && b.th ? b.th : b.en}
+                </span>
+                {b.subtitle && (
+                  <span className="block text-[12px] opacity-80 leading-snug">
+                    {b.subtitle}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div />
+        )}
+
+        {/* Info text + Book button bottom-right, left-aligned within column */}
+        <div className="flex flex-col items-start gap-3 shrink-0">
+          <p
+            className="italic text-[12px] md:text-[13px] leading-snug whitespace-pre-line text-left font-body"
+            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+          >
+            {s.meta[lang]}
+          </p>
+          <CreamPill smaller>
+            {pick(lang, "Book a session", "จองเซสชั่น")}
+          </CreamPill>
+        </div>
+      </div>
     </div>
   );
 }
@@ -319,7 +356,11 @@ export function Services() {
             className="object-cover"
             priority
           />
-          <div aria-hidden className="absolute inset-0 bg-black/30" />
+          {/* Subtle dark gradient overlay — darkest middle+bottom for legibility */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/35 to-black/55"
+          />
           <CardBody s={feature} lang={lang} layout="feature" />
         </article>
 
@@ -338,7 +379,11 @@ export function Services() {
                 style={{ objectPosition: s.imgPosition ?? "center" }}
                 className="object-cover"
               />
-              <div aria-hidden className="absolute inset-0 bg-black/35" />
+              {/* Subtle dark gradient overlay — darkest middle+bottom for legibility */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60"
+              />
               <CardBody s={s} lang={lang} />
             </article>
           ))}
