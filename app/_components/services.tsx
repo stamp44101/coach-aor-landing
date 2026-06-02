@@ -63,8 +63,8 @@ const cards: Service[] = [
       th: "การผสมผสานระหว่างศาสตร์การโค้ชและการสะกดจิตบำบัด เพื่อปรับเปลี่ยนจิตใต้สำนึกและคลายปมที่ฝังลึก:",
     },
     meta: {
-      en: "Online session · 90–120 minutes per session",
-      th: "ในแต่ละเซสชั่นจะใช้เวลาประมาณ 90–120 นาที",
+      en: "Online session\nDuration: 90-120 minutes per session",
+      th: "Online session\nระยะเวลา: 90-120 นาที / เซสชั่น",
     },
     topics: hypnotherapyTopics,
     img: "/img/service-coaching-hypno-v2.jpg",
@@ -77,8 +77,8 @@ const cards: Service[] = [
       th: "เรียนรู้และพัฒนาตนเองจากบ้านของคุณเอง หรือในสิ่งแวดล้อมที่คุณสะดวกสบาย เน้นเนื้อหาเกี่ยวกับ Feminine Energy, การรักตัวเอง, การตระหนักรู้ในคุณค่าและความมั่นใจในตัวเอง",
     },
     meta: {
-      en: "Course length: 3–5 hours",
-      th: "ความยาวแต่ละคอร์สประมาณ 3–5 ชั่วโมง",
+      en: "Online course\nCourse length: 3-5 hours",
+      th: "คอร์สออนไลน์\nความยาวคอร์ส: 3-5 ชั่วโมง",
     },
     bullets: [
       {
@@ -100,8 +100,8 @@ const cards: Service[] = [
       th: "เวิร์กชอปและรีทรีตแบบเจอตัวสำหรับผู้หญิง บรรยากาศเน้น safe space การฟังกันอย่างลึกซึ้ง และการ reconnect กับตัวเอง",
     },
     meta: {
-      en: "Online & Offline · Chiang Mai, Bangkok, Phuket",
-      th: "กิจกรรมนอกสถานที่ Chiang Mai · Bangkok · Phuket",
+      en: "Online & Offline workshop\nLocations: Chiang Mai, Bangkok and Phuket",
+      th: "Workshop ทั้ง Online & Offline\nสถานที่: Chiang Mai, Bangkok และ Phuket",
     },
     bullets: [
       { en: "Women's Circle" },
@@ -122,8 +122,8 @@ const cards: Service[] = [
       th: "หลักสูตรฝึกอบรมพร้อมประกาศนียบัตรสำหรับคนที่อยากเป็นโค้ช หรือใช้ทักษะการโค้ชในงาน ธุรกิจ และชีวิตส่วนตัว เหมาะกับบุคคลทั่วไป ผู้นำองค์กร เทรนเนอร์ นักบำบัดที่ต้องการยกระดับตนเองสู่สากล",
     },
     meta: {
-      en: "Program duration: approximately 2 months",
-      th: "หลักสูตรอบรม ระยะเวลาการเรียนรวมประมาณ 2 เดือน",
+      en: "Program Duration:\nApproximately 2 months",
+      th: "ระยะเวลาหลักสูตร:\nประมาณ 2 เดือน",
     },
     bullets: [
       { en: "Coaching Foundations", th: "พื้นฐานการเป็นโค้ช" },
@@ -275,7 +275,8 @@ function CardBody({
       className="absolute inset-0 text-cream"
       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
     >
-      {/* Center title + description — absolute at top 35% */}
+      {/* Center title + description — absolute at top 35%.
+          Desc is narrower (max-w-sm on md+) so the text clumps more toward center. */}
       <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] text-center">
         <h3
           className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl lg:text-5xl`}
@@ -286,7 +287,7 @@ function CardBody({
             </span>
           ))}
         </h3>
-        <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-pretty font-body">
+        <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-pretty font-body max-w-xs md:max-w-sm mx-auto">
           {s.description[lang]}
         </p>
       </div>
