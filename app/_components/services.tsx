@@ -51,7 +51,8 @@ const feature: Service = {
   },
   topics: coachingTopics,
   img: "/img/service-private-coaching.jpg",
-  imgPosition: "center",
+  // Focal high — heads of the people sit right at the top edge of the card.
+  imgPosition: "center 75%",
 };
 
 const cards: Service[] = [
