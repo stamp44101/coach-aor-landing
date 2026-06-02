@@ -69,7 +69,7 @@ export function Testimonials() {
           {items.map((t) => (
             <figure
               key={t.name.en}
-              className="relative overflow-hidden rounded-[2px] aspect-[3/4]"
+              className="relative overflow-hidden rounded-[2px] min-h-[460px] md:min-h-[540px] flex"
             >
               {/* Use background-image (not next/image) so we can zoom/crop into the face precisely.
                   backgroundSize 'cover' + backgroundPosition gives full control of focal point. */}
@@ -91,7 +91,7 @@ export function Testimonials() {
                 className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent"
               />
               <div
-                className="absolute inset-0 p-6 md:p-8 text-white flex flex-col justify-end"
+                className="relative z-10 flex-1 p-6 md:p-8 text-white flex flex-col justify-end"
                 style={{ textShadow: "0 1px 12px rgba(0,0,0,0.55)" }}
               >
                 <blockquote className="text-[13px] md:text-[13.5px] leading-relaxed text-white/95">
