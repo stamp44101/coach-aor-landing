@@ -40,18 +40,19 @@ const hypnotherapyTopics = [
 ];
 
 const feature: Service = {
-  title: { en: "Private Coaching", th: "Private Coaching" },
+  title: { en: "Private\nCoaching", th: "Private\nCoaching" },
   description: {
     en: "Deep-dive coaching to identify and resolve root causes while designing a sustainable lifestyle.",
     th: "การโค้ชเชิงลึก เพื่อระบุและแก้ปัญหาที่ต้นตอ รวมถึงช่วยออกแบบและพัฒนาไลฟ์สไตล์ เพื่อให้เกิดผลลัพธ์ที่ยั่งยืน",
   },
   meta: {
-    en: "Online session · 60–90 minutes per session",
-    th: "ในแต่ละเซสชั่นจะใช้เวลาประมาณ 60–90 นาที",
+    en: "Online session\nDuration: 60-90 minutes per session",
+    th: "Online session\nระยะเวลา: 60-90 นาที / เซสชั่น",
   },
   topics: coachingTopics,
   img: "/img/service-private-coaching.jpg",
-  imgPosition: "center",
+  // Focal: heads at the very top edge — hair just touches/slightly cropped per Canva ref.
+  imgPosition: "center 60%",
 };
 
 const cards: Service[] = [
@@ -62,8 +63,8 @@ const cards: Service[] = [
       th: "การผสมผสานระหว่างศาสตร์การโค้ชและการสะกดจิตบำบัด เพื่อปรับเปลี่ยนจิตใต้สำนึกและคลายปมที่ฝังลึก:",
     },
     meta: {
-      en: "Online session · 90–120 minutes per session",
-      th: "ในแต่ละเซสชั่นจะใช้เวลาประมาณ 90–120 นาที",
+      en: "Online session\nDuration: 90-120 minutes per session",
+      th: "Online session\nระยะเวลา: 90-120 นาที / เซสชั่น",
     },
     topics: hypnotherapyTopics,
     img: "/img/service-coaching-hypno-v2.jpg",
@@ -76,8 +77,8 @@ const cards: Service[] = [
       th: "เรียนรู้และพัฒนาตนเองจากบ้านของคุณเอง หรือในสิ่งแวดล้อมที่คุณสะดวกสบาย เน้นเนื้อหาเกี่ยวกับ Feminine Energy, การรักตัวเอง, การตระหนักรู้ในคุณค่าและความมั่นใจในตัวเอง",
     },
     meta: {
-      en: "Course length: 3–5 hours",
-      th: "ความยาวแต่ละคอร์สประมาณ 3–5 ชั่วโมง",
+      en: "Online course\nCourse length: 3-5 hours",
+      th: "คอร์สออนไลน์\nความยาวคอร์ส: 3-5 ชั่วโมง",
     },
     bullets: [
       {
@@ -99,8 +100,8 @@ const cards: Service[] = [
       th: "เวิร์กชอปและรีทรีตแบบเจอตัวสำหรับผู้หญิง บรรยากาศเน้น safe space การฟังกันอย่างลึกซึ้ง และการ reconnect กับตัวเอง",
     },
     meta: {
-      en: "Online & Offline · Chiang Mai, Bangkok, Phuket",
-      th: "กิจกรรมนอกสถานที่ Chiang Mai · Bangkok · Phuket",
+      en: "Online & Offline workshop\nLocations: Chiang Mai, Bangkok and Phuket",
+      th: "Workshop ทั้ง Online & Offline\nสถานที่: Chiang Mai, Bangkok และ Phuket",
     },
     bullets: [
       { en: "Women's Circle" },
@@ -121,8 +122,8 @@ const cards: Service[] = [
       th: "หลักสูตรฝึกอบรมพร้อมประกาศนียบัตรสำหรับคนที่อยากเป็นโค้ช หรือใช้ทักษะการโค้ชในงาน ธุรกิจ และชีวิตส่วนตัว เหมาะกับบุคคลทั่วไป ผู้นำองค์กร เทรนเนอร์ นักบำบัดที่ต้องการยกระดับตนเองสู่สากล",
     },
     meta: {
-      en: "Program duration: approximately 2 months",
-      th: "หลักสูตรอบรม ระยะเวลาการเรียนรวมประมาณ 2 เดือน",
+      en: "Program Duration:\nApproximately 2 months",
+      th: "ระยะเวลาหลักสูตร:\nประมาณ 2 เดือน",
     },
     bullets: [
       { en: "Coaching Foundations", th: "พื้นฐานการเป็นโค้ช" },
@@ -146,11 +147,21 @@ const cards: Service[] = [
   },
 ];
 
-function CreamPill({ children }: { children: React.ReactNode }) {
+function CreamPill({
+  children,
+  smaller = false,
+}: {
+  children: React.ReactNode;
+  smaller?: boolean;
+}) {
   return (
     <a
       href="#booking"
-      className="inline-block text-[11px] tracking-[0.22em] uppercase px-6 py-3 rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm"
+      className={`inline-block uppercase rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm ${
+        smaller
+          ? "text-[11px] md:text-[12px] tracking-[0.32em] px-6 py-3"
+          : "text-[13px] md:text-sm tracking-[0.22em] px-7 py-3.5"
+      }`}
     >
       {children}
     </a>
@@ -169,13 +180,16 @@ function CardBody({
   const titleLines = s.title[lang].split("\n");
   const isFeature = layout === "feature";
 
+  // Bullet marker — disc for feature (per Canva ref), middle-dot for stacked cards.
+  const bulletMark = isFeature ? "•" : "·";
+
   const bulletsBlock = (s.topics || s.bullets) && (
     <div>
       {s.topics && (
         <ul className="space-y-1 text-[13px] leading-snug">
           {s.topics.map((t) => (
             <li key={t.en} className="flex gap-2 items-start">
-              <span className="opacity-70 mt-0.5">·</span>
+              <span className="opacity-80 mt-0.5">{bulletMark}</span>
               <span>{t[lang]}</span>
             </li>
           ))}
@@ -185,7 +199,7 @@ function CardBody({
         <ul className="space-y-1.5 text-[13px] leading-snug">
           {s.bullets.map((b) => (
             <li key={b.en} className="flex gap-2 items-start">
-              <span className="opacity-70 mt-0.5">·</span>
+              <span className="opacity-80 mt-0.5">{bulletMark}</span>
               <div>
                 <span className="block">
                   {lang === "th" && b.th ? b.th : b.en}
@@ -206,11 +220,15 @@ function CardBody({
   const metaCtaBlock = (
     <div
       className={`flex flex-col items-center gap-4 text-center ${
-        isFeature ? "md:items-end md:text-right" : ""
+        isFeature ? "md:items-start md:text-left" : ""
       }`}
     >
       <p
-        className="text-[12px] md:text-[13px] italic leading-snug whitespace-pre-line"
+        className={`leading-snug whitespace-pre-line ${
+          isFeature
+            ? "italic text-[13px] md:text-sm"
+            : "italic text-[12px] md:text-[13px]"
+        }`}
         style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
       >
         {s.meta[lang]}
@@ -219,16 +237,49 @@ function CardBody({
     </div>
   );
 
+  // Feature card per Canva reference: title at top, bullets bottom-left, meta+CTA bottom-right.
+  if (isFeature) {
+    return (
+      <div
+        className="relative h-full flex flex-col text-cream px-6 md:px-10 lg:px-14 pt-6 md:pt-8 pb-6 md:pb-8 justify-between"
+        style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
+      >
+        <div className="text-center">
+          <h3
+            className={`leading-[1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl`}
+          >
+            {titleLines.map((line, i) => (
+              <span key={i} className="block">
+                {line}
+              </span>
+            ))}
+          </h3>
+          <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-xl mx-auto text-pretty">
+            {s.description[lang]}
+          </p>
+        </div>
+
+        {/* Bottom row: stack on mobile (centered), side-by-side desktop aligned to subtitle width. */}
+        <div className="mt-auto max-w-xl mx-auto w-full flex flex-col items-center md:flex-row md:items-end md:justify-between gap-5 md:gap-10">
+          <div className="md:self-end">{bulletsBlock}</div>
+          <div className="md:self-end">{metaCtaBlock}</div>
+        </div>
+      </div>
+    );
+  }
+
+  // Stacked card (2×2 grid) — absolute-positioned layout per design spec.
+  // Title+desc float at top 35%, bottom row pins to bottom-left / bottom-right corners.
   return (
     <div
-      className={`relative h-full flex flex-col text-cream px-6 md:px-8 py-8 md:py-10 ${
-        isFeature ? "justify-center" : "justify-between gap-6"
-      }`}
+      className="absolute inset-0 text-cream"
       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
     >
-      <div className="text-center">
+      {/* Center title + description — absolute at top 35%.
+          Desc is narrower (max-w-sm on md+) so the text clumps more toward center. */}
+      <div className="absolute top-[35%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] text-center">
         <h3
-          className={`leading-[1.1] ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+          className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl lg:text-5xl`}
         >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
@@ -236,24 +287,53 @@ function CardBody({
             </span>
           ))}
         </h3>
-        <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-md mx-auto">
+        <p className="mt-3 text-[13px] md:text-[14px] leading-relaxed text-pretty font-body max-w-xs md:max-w-sm mx-auto">
           {s.description[lang]}
         </p>
       </div>
 
-      {isFeature ? (
-        <div className="mt-6 md:mt-8 mx-auto w-fit max-w-full flex flex-col md:flex-row items-center md:items-end justify-center gap-5 md:gap-10 lg:gap-14">
-          {bulletsBlock}
-          {metaCtaBlock}
+      {/* Bottom row — absolute at bottom-30 left-30 right-30.
+          Mobile: stack vertically (bullets above, meta+CTA below, both centered).
+          Desktop: side-by-side bullets-left, meta+CTA-right. */}
+      <div className="absolute bottom-[24px] md:bottom-[30px] left-[20px] md:left-[30px] right-[20px] md:right-[30px] flex flex-col items-center md:flex-row md:items-end md:justify-between gap-4 md:gap-5">
+        {/* Bullets bottom-left */}
+        {(s.topics || s.bullets) ? (
+          <ul className="list-disc list-outside pl-4 space-y-1 text-[12.5px] md:text-[13px] leading-snug marker:opacity-90 font-body">
+            {s.topics?.map((t) => (
+              <li key={t.en}>{t[lang]}</li>
+            ))}
+            {s.bullets?.map((b) => (
+              <li key={b.en}>
+                <span className="block">
+                  {lang === "th" && b.th ? b.th : b.en}
+                </span>
+                {b.subtitle && (
+                  <span className="block text-[12px] opacity-80 leading-snug">
+                    {b.subtitle}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div />
+        )}
+
+        {/* Info text + Book button.
+            Mobile: centered (so button sits in the visual middle of the card, aligned across all cards).
+            Desktop: items-start (left-aligned within the bottom-right column per spec). */}
+        <div className="flex flex-col items-center md:items-start gap-3 shrink-0">
+          <p
+            className="italic text-[12px] md:text-[13px] leading-snug whitespace-pre-line text-center md:text-left font-body"
+            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+          >
+            {s.meta[lang]}
+          </p>
+          <CreamPill smaller>
+            {pick(lang, "Book a session", "จองเซสชั่น")}
+          </CreamPill>
         </div>
-      ) : (
-        <>
-          {bulletsBlock && (
-            <div className="mx-auto w-fit max-w-full">{bulletsBlock}</div>
-          )}
-          {metaCtaBlock}
-        </>
-      )}
+      </div>
     </div>
   );
 }
@@ -264,13 +344,15 @@ export function Services() {
     <section id="services" className="bg-tan-deep py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <h2
-          className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-cream mb-10 md:mb-14`}
+          className={`${lang === "th" ? "font-display-th font-medium" : "font-body font-normal"} text-3xl md:text-4xl leading-[1.1] text-cream mb-10 md:mb-14`}
         >
           {pick(lang, "Our Services", "บริการต่าง ๆ ของ Coach Aor CA")}
         </h2>
 
-        {/* === FEATURE CARD: Private Coaching === */}
-        <article className="relative rounded-[3px] overflow-hidden mb-5 md:mb-6 min-h-[440px] md:min-h-[520px]">
+        {/* === FEATURE CARD: Private Coaching ===
+            Mobile: taller aspect so title+bullets+meta+CTA all fit comfortably.
+            Desktop: 12/5 (2.4:1) wide banner, consistent crop at every width. */}
+        <article className="relative rounded-[3px] overflow-hidden mb-5 md:mb-6 aspect-[3/4] md:aspect-[12/5]">
           <Image
             src={feature.img}
             alt={feature.title[lang]}
@@ -280,7 +362,11 @@ export function Services() {
             className="object-cover"
             priority
           />
-          <div aria-hidden className="absolute inset-0 bg-black/30" />
+          {/* Subtle dark gradient overlay — darkest middle+bottom for legibility */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/35 to-black/55"
+          />
           <CardBody s={feature} lang={lang} layout="feature" />
         </article>
 
@@ -299,7 +385,11 @@ export function Services() {
                 style={{ objectPosition: s.imgPosition ?? "center" }}
                 className="object-cover"
               />
-              <div aria-hidden className="absolute inset-0 bg-black/35" />
+              {/* Subtle dark gradient overlay — darkest middle+bottom for legibility */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/60"
+              />
               <CardBody s={s} lang={lang} />
             </article>
           ))}

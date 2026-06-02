@@ -59,7 +59,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="mb-10 md:mb-14">
           <h2
-            className={`${lang === "th" ? "font-display-th font-medium" : "font-display"} text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
+            className={`${lang === "th" ? "font-display-th font-medium" : "font-display"} text-balance text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
           >
             {pick(lang, "Testimonials", "เสียงจากผู้ที่เคยรับการโค้ช")}
           </h2>
@@ -95,7 +95,7 @@ export function Testimonials() {
                 className="relative z-10 flex-1 p-6 md:p-8 text-white flex flex-col justify-end"
                 style={{ textShadow: "0 1px 12px rgba(0,0,0,0.55)" }}
               >
-                <blockquote className="text-[13px] md:text-[13.5px] leading-relaxed text-white/95">
+                <blockquote className="text-[13px] md:text-[13.5px] leading-relaxed text-white/95 text-pretty">
                   &ldquo;{t.quote[lang]}&rdquo;
                 </blockquote>
                 <figcaption className="mt-5">
