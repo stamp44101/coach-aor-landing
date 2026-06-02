@@ -259,10 +259,10 @@ function CardBody({
           </p>
         </div>
 
-        {/* Bottom row: bullets / meta+CTA aligned to the SAME width as the subtitle above (max-w-xl mx-auto). */}
-        <div className="mt-auto max-w-xl mx-auto w-full flex items-end justify-between gap-6 md:gap-10">
-          <div className="self-end">{bulletsBlock}</div>
-          <div className="self-end">{metaCtaBlock}</div>
+        {/* Bottom row: stack on mobile (centered), side-by-side desktop aligned to subtitle width. */}
+        <div className="mt-auto max-w-xl mx-auto w-full flex flex-col items-center md:flex-row md:items-end md:justify-between gap-5 md:gap-10">
+          <div className="md:self-end">{bulletsBlock}</div>
+          <div className="md:self-end">{metaCtaBlock}</div>
         </div>
       </div>
     );
@@ -291,8 +291,10 @@ function CardBody({
         </p>
       </div>
 
-      {/* Bottom row — absolute at bottom-30 left-30 right-30 */}
-      <div className="absolute bottom-[28px] md:bottom-[30px] left-[24px] md:left-[30px] right-[24px] md:right-[30px] flex items-end justify-between gap-5">
+      {/* Bottom row — absolute at bottom-30 left-30 right-30.
+          Mobile: stack vertically (bullets above, meta+CTA below, both centered).
+          Desktop: side-by-side bullets-left, meta+CTA-right. */}
+      <div className="absolute bottom-[24px] md:bottom-[30px] left-[20px] md:left-[30px] right-[20px] md:right-[30px] flex flex-col items-center md:flex-row md:items-end md:justify-between gap-4 md:gap-5">
         {/* Bullets bottom-left */}
         {(s.topics || s.bullets) ? (
           <ul className="list-disc list-outside pl-4 space-y-1 text-[12.5px] md:text-[13px] leading-snug marker:opacity-90 font-body">
@@ -345,9 +347,9 @@ export function Services() {
         </h2>
 
         {/* === FEATURE CARD: Private Coaching ===
-            Fixed aspect ratio so the image crop stays consistent at every desktop width
-            (min-h would let aspect drift → heads cropping inconsistently). */}
-        <article className="relative rounded-[3px] overflow-hidden mb-5 md:mb-6 aspect-[3/2] md:aspect-[12/5]">
+            Mobile: taller aspect so title+bullets+meta+CTA all fit comfortably.
+            Desktop: 12/5 (2.4:1) wide banner, consistent crop at every width. */}
+        <article className="relative rounded-[3px] overflow-hidden mb-5 md:mb-6 aspect-[3/4] md:aspect-[12/5]">
           <Image
             src={feature.img}
             alt={feature.title[lang]}
