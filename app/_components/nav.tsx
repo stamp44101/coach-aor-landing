@@ -133,7 +133,7 @@ export function Nav() {
             </button>
           </div>
 
-          <ul className="flex flex-col px-6 py-6 gap-1 text-cocoa">
+          <ul className="flex flex-col px-6 pt-6 gap-1 text-cocoa">
             {links.map((l) => (
               <li key={l.href}>
                 <a
@@ -147,31 +147,33 @@ export function Nav() {
             ))}
           </ul>
 
-          <div className="mt-auto px-6 pb-7 flex flex-col gap-5">
-            <div className="flex items-center gap-1 text-[12px] tracking-[0.18em]">
-              <button
-                type="button"
-                onClick={() => setLang("th")}
-                className={`px-3 py-1 rounded-full border transition-colors ${
-                  lang === "th"
-                    ? "bg-cocoa text-cream border-cocoa"
-                    : "text-cocoa border-cocoa/40"
-                }`}
-              >
-                TH
-              </button>
-              <button
-                type="button"
-                onClick={() => setLang("en")}
-                className={`px-3 py-1 rounded-full border transition-colors ${
-                  lang === "en"
-                    ? "bg-cocoa text-cream border-cocoa"
-                    : "text-cocoa border-cocoa/40"
-                }`}
-              >
-                EN
-              </button>
-            </div>
+          {/* Language toggle — sits right under the menu list so it's grouped with the nav items */}
+          <div className="px-6 pt-5 flex items-center gap-1 text-[12px] tracking-[0.18em]">
+            <button
+              type="button"
+              onClick={() => setLang("th")}
+              className={`px-3 py-1 rounded-full border transition-colors ${
+                lang === "th"
+                  ? "bg-cocoa text-cream border-cocoa"
+                  : "text-cocoa border-cocoa/40"
+              }`}
+            >
+              TH
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang("en")}
+              className={`px-3 py-1 rounded-full border transition-colors ${
+                lang === "en"
+                  ? "bg-cocoa text-cream border-cocoa"
+                  : "text-cocoa border-cocoa/40"
+              }`}
+            >
+              EN
+            </button>
+          </div>
+
+          <div className="mt-auto px-6 pb-7">
             <a
               href="#booking"
               onClick={() => setOpen(false)}
