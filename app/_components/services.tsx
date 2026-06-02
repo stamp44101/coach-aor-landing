@@ -346,8 +346,10 @@ export function Services() {
           {pick(lang, "Our Services", "บริการต่าง ๆ ของ Coach Aor CA")}
         </h2>
 
-        {/* === FEATURE CARD: Private Coaching === */}
-        <article className="relative rounded-[3px] overflow-hidden mb-5 md:mb-6 min-h-[440px] md:min-h-[520px]">
+        {/* === FEATURE CARD: Private Coaching ===
+            Fixed aspect ratio so the image crop stays consistent at every desktop width
+            (min-h would let aspect drift → heads cropping inconsistently). */}
+        <article className="relative rounded-[3px] overflow-hidden mb-5 md:mb-6 aspect-[3/2] md:aspect-[12/5]">
           <Image
             src={feature.img}
             alt={feature.title[lang]}
