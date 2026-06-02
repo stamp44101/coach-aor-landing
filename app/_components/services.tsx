@@ -318,10 +318,12 @@ function CardBody({
           <div />
         )}
 
-        {/* Info text + Book button bottom-right, left-aligned within column */}
-        <div className="flex flex-col items-start gap-3 shrink-0">
+        {/* Info text + Book button.
+            Mobile: centered (so button sits in the visual middle of the card, aligned across all cards).
+            Desktop: items-start (left-aligned within the bottom-right column per spec). */}
+        <div className="flex flex-col items-center md:items-start gap-3 shrink-0">
           <p
-            className="italic text-[12px] md:text-[13px] leading-snug whitespace-pre-line text-left font-body"
+            className="italic text-[12px] md:text-[13px] leading-snug whitespace-pre-line text-center md:text-left font-body"
             style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
           >
             {s.meta[lang]}
