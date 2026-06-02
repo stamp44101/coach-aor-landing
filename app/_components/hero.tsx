@@ -33,7 +33,7 @@ export function Hero() {
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="text-center max-w-4xl mx-auto">
             {lang === "en" ? (
-              <h1 className="font-display italic text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
+              <h1 className="font-display italic font-normal text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
                 Step Into Your
                 <br />
                 Feminine Power
@@ -61,7 +61,7 @@ export function Hero() {
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
-            <p className="mt-6 md:mt-7 text-[13px] text-cocoa-soft tracking-wide max-w-xl mx-auto">
+            <p className="mt-6 md:mt-7 text-[13px] text-mocha tracking-wide max-w-xl mx-auto">
               {pick(
                 lang,
                 "Unleash Your Inner Power & Feminine Potential With Coach Aor.",
@@ -96,8 +96,9 @@ export function Hero() {
             </div>
           </div>
           <div className="md:col-span-7 md:pl-4 lg:pl-10 flex flex-col">
-            <p className="font-display italic text-3xl md:text-4xl lg:text-5xl text-cocoa leading-[1.2]">
-              &ldquo;All power comes from reconnecting with your true self.&rdquo;
+            <p className="font-display italic text-2xl md:text-3xl lg:text-4xl text-mocha leading-[1.2]">
+              &ldquo;All power comes from reconnecting
+              <br className="hidden md:block" /> with your true self.&rdquo;
             </p>
             <p className="mt-3 font-display italic text-sm md:text-base text-cocoa-soft">
               {pick(

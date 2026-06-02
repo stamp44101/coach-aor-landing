@@ -6,8 +6,12 @@ import { useLang, pick } from "./lang";
 export function Booking() {
   const { lang } = useLang();
   return (
-    <section id="booking" className="bg-cream py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <section
+      id="booking"
+      className="relative bg-cream py-20 md:py-28 overflow-hidden"
+    >
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 grid md:grid-cols-2 gap-12 md:gap-16 items-stretch md:items-end">
+        {/* LEFT — form */}
         <div className="order-2 md:order-1">
           <h2
             className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
@@ -59,90 +63,93 @@ export function Booking() {
             </label>
             <button
               type="submit"
-              className="mt-2 w-full md:w-auto md:min-w-[280px] px-9 py-3.5 text-[12px] tracking-[0.24em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
+              className="mt-2 w-full px-9 py-3.5 text-[12px] tracking-[0.24em] uppercase text-cream bg-cocoa hover:bg-cocoa-soft transition-colors rounded-full"
             >
               {pick(lang, "Send", "ส่ง")}
             </button>
           </form>
         </div>
 
-        <div className="order-1 md:order-2">
-          <div className="relative aspect-[4/5] md:aspect-[4/5] overflow-hidden rounded-[2px]">
-            <Image
-              src="/img/booking-portrait.jpg"
-              alt="Coach Aor"
-              fill
-              sizes="(max-width: 768px) 100vw, 600px"
-              className="object-cover"
-              style={{ objectPosition: "left center" }}
-              priority
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-l from-cream via-cream/70 via-30% to-transparent"
-            />
+        {/* RIGHT — photo fills the entire right column, text+QR sits in the whitespace NEXT TO her (left half).
+            Subtle white overlay brightens the photo so the cocoa text reads cleanly. */}
+        <div className="order-1 md:order-2 relative aspect-[3/4] md:aspect-[4/5] overflow-hidden rounded-[2px]">
+          <Image
+            src="/img/booking-portrait.jpg"
+            alt="Coach Aor"
+            fill
+            sizes="(max-width: 768px) 100vw, 600px"
+            className="object-cover"
+            style={{ objectPosition: "20% center" }}
+            priority
+          />
+          {/* Brighten everything subtly so text contrast improves */}
+          <div aria-hidden className="absolute inset-0 bg-white/25" />
+          {/* Stronger cream wash on the RIGHT half — the "white space" where the text group sits, flush against the right edge */}
+          <div
+            aria-hidden
+            className="absolute inset-y-0 right-0 w-[60%] md:w-[55%] bg-gradient-to-l from-cream via-cream/85 to-transparent"
+          />
 
-            <div className="absolute inset-y-0 right-0 w-[62%] flex flex-col items-end justify-center px-5 md:px-7 text-right">
-              <p className="text-cocoa text-lg md:text-xl lg:text-2xl leading-snug">
-                {pick(
-                  lang,
-                  <>
-                    Ready to start your transformation
-                    <br />
-                    with Coach Aor?
-                  </>,
-                  <>สนใจนัดหมายจองคิวเซสชั่นกับโค้ชอ้อ</>,
-                )}
-              </p>
-              <div className="mt-5 flex gap-3 md:gap-4">
-                <div className="text-center">
-                  <div className="relative w-24 h-24 md:w-28 md:h-28 bg-cream rounded-[2px] overflow-hidden">
-                    <Image
-                      src="/img/whatsapp-qr.jpg"
-                      alt="Scan to message Coach Aor on WhatsApp"
-                      fill
-                      sizes="112px"
-                      className="object-contain p-1"
-                      priority
-                    />
-                  </div>
-                  <p className="mt-2 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa-soft">
-                    WhatsApp
-                  </p>
+          {/* Text + QR + LINE id — flush to the RIGHT edge of the photo (per Canva original) */}
+          <div className="absolute inset-y-0 right-0 w-[60%] md:w-[50%] flex flex-col items-center justify-end text-center gap-5 md:gap-6 p-4 md:p-7">
+            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug">
+              {pick(
+                lang,
+                <>
+                  Ready to start your transformation
+                  <br />
+                  with Coach Aor?
+                </>,
+                <>สนใจนัดหมายจองคิวเซสชั่นกับโค้ชอ้อ</>,
+              )}
+            </p>
+
+            <div
+              className="flex gap-3 md:gap-4"
+              style={{ mixBlendMode: "multiply" }}
+            >
+              <div className="text-center">
+                <div className="relative w-20 h-20 md:w-24 md:h-24">
+                  <Image
+                    src="/img/whatsapp-qr.jpg"
+                    alt="Scan to message Coach Aor on WhatsApp"
+                    fill
+                    sizes="96px"
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-                <div className="text-center">
-                  <div className="relative w-24 h-24 md:w-28 md:h-28 bg-cream rounded-[2px] overflow-hidden">
-                    <Image
-                      src="/img/line-qr.png"
-                      alt="Scan to add Coach Aor on LINE Official"
-                      fill
-                      sizes="112px"
-                      className="object-contain p-1"
-                      priority
-                    />
-                  </div>
-                  <p className="mt-2 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa-soft">
-                    LINE Official
-                  </p>
-                </div>
+                <p className="mt-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa">
+                  WhatsApp
+                </p>
               </div>
-              <p className="mt-5 text-cocoa text-base md:text-lg font-display italic">
-                <a
-                  href="https://lin.ee/ZVRHOhSu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  Line Official : @coachaor.ca
-                </a>
-              </p>
-              <a
-                href="mailto:soulfulwomens@gmail.com"
-                className="mt-1 text-cocoa-soft text-xs md:text-sm tracking-wide hover:text-cocoa transition-colors"
-              >
-                soulfulwomens@gmail.com
-              </a>
+              <div className="text-center">
+                <div className="relative w-20 h-20 md:w-24 md:h-24">
+                  <Image
+                    src="/img/line-qr.png"
+                    alt="Scan to add Coach Aor on LINE Official"
+                    fill
+                    sizes="96px"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <p className="mt-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa">
+                  LINE Official
+                </p>
+              </div>
             </div>
+
+            <p className="text-cocoa text-sm md:text-base font-display italic">
+              <a
+                href="https://lin.ee/ZVRHOhSu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Line Official : @coachaorca
+              </a>
+            </p>
           </div>
         </div>
       </div>

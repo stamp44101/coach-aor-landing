@@ -3,7 +3,13 @@
 import Image from "next/image";
 import { useLang, pick, type Lang } from "./lang";
 
-type Bullet = { en: string; th?: string };
+type Bullet = {
+  en: string;
+  /** translation — shown only when lang === "th" (replaces en). */
+  th?: string;
+  /** secondary text — always shown UNDER the main line regardless of lang. */
+  subtitle?: string;
+};
 type Service = {
   title: { en: string; th: string };
   description: { en: string; th: string };
@@ -76,11 +82,11 @@ const cards: Service[] = [
     bullets: [
       {
         en: "Awaken Feminine Energy",
-        th: "ปลุกพลังความเป็นหญิง เนรมิตชีวิตในฝัน",
+        subtitle: "ปลุกพลังความเป็นหญิง เนรมิตชีวิตในฝัน",
       },
       {
         en: "High Value Woman",
-        th: "ตระหนักรู้คุณค่าในตัวเอง ปลดล็อคศักยภาพด้านความสำเร็จ ความรัก & การเงิน",
+        subtitle: "ตระหนักรู้คุณค่าในตัวเอง ปลดล็อคศักยภาพด้านความสำเร็จ ความรัก & การเงิน",
       },
     ],
     img: "/img/service-online-course.jpg",
@@ -161,14 +167,68 @@ function CardBody({
   layout?: "stacked" | "feature";
 }) {
   const titleLines = s.title[lang].split("\n");
+  const isFeature = layout === "feature";
+
+  const bulletsBlock = (s.topics || s.bullets) && (
+    <div>
+      {s.topics && (
+        <ul className="space-y-1 text-[13px] leading-snug">
+          {s.topics.map((t) => (
+            <li key={t.en} className="flex gap-2 items-start">
+              <span className="opacity-70 mt-0.5">·</span>
+              <span>{t[lang]}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {s.bullets && (
+        <ul className="space-y-1.5 text-[13px] leading-snug">
+          {s.bullets.map((b) => (
+            <li key={b.en} className="flex gap-2 items-start">
+              <span className="opacity-70 mt-0.5">·</span>
+              <div>
+                <span className="block">
+                  {lang === "th" && b.th ? b.th : b.en}
+                </span>
+                {b.subtitle && (
+                  <span className="block text-[12px] opacity-80 leading-snug">
+                    {b.subtitle}
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+
+  const metaCtaBlock = (
+    <div
+      className={`flex flex-col items-center gap-4 text-center ${
+        isFeature ? "md:items-end md:text-right" : ""
+      }`}
+    >
+      <p
+        className="text-[12px] md:text-[13px] italic leading-snug whitespace-pre-line"
+        style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
+      >
+        {s.meta[lang]}
+      </p>
+      <CreamPill>{pick(lang, "Book a session", "จองเซสชั่น")}</CreamPill>
+    </div>
+  );
+
   return (
     <div
-      className="relative h-full flex flex-col justify-center text-cream px-6 md:px-8 py-8 md:py-10"
+      className={`relative h-full flex flex-col text-cream px-6 md:px-8 py-8 md:py-10 ${
+        isFeature ? "justify-center" : "justify-between gap-6"
+      }`}
       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
     >
       <div className="text-center">
         <h3
-          className={`leading-[1.1] ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${layout === "feature" ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+          className={`leading-[1.1] ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
         >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
@@ -181,46 +241,19 @@ function CardBody({
         </p>
       </div>
 
-      <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-end">
-        <div>
-          {s.topics && (
-            <ul className="space-y-1 text-[13px] leading-snug">
-              {s.topics.map((t) => (
-                <li key={t.en} className="flex gap-2 items-start">
-                  <span className="opacity-70 mt-0.5">·</span>
-                  <span>{t[lang]}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-          {s.bullets && (
-            <ul className="space-y-1.5 text-[13px] leading-snug">
-              {s.bullets.map((b) => (
-                <li key={b.en} className="flex gap-2 items-start">
-                  <span className="opacity-70 mt-0.5">·</span>
-                  <div>
-                    <span className="block">{b.en}</span>
-                    {b.th && (
-                      <span className="block text-[12px] opacity-80 leading-snug">
-                        {b.th}
-                      </span>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+      {isFeature ? (
+        <div className="mt-6 md:mt-8 mx-auto w-fit max-w-full flex flex-col md:flex-row items-center md:items-end justify-center gap-5 md:gap-10 lg:gap-14">
+          {bulletsBlock}
+          {metaCtaBlock}
         </div>
-        <div className="flex flex-col items-end gap-4 text-right">
-          <p
-            className="text-[12px] md:text-[13px] italic leading-snug whitespace-pre-line"
-            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
-          >
-            {s.meta[lang]}
-          </p>
-          <CreamPill>{pick(lang, "Book a session", "จองเซสชั่น")}</CreamPill>
-        </div>
-      </div>
+      ) : (
+        <>
+          {bulletsBlock && (
+            <div className="mx-auto w-fit max-w-full">{bulletsBlock}</div>
+          )}
+          {metaCtaBlock}
+        </>
+      )}
     </div>
   );
 }
