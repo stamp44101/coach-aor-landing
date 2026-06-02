@@ -79,7 +79,7 @@ export function Booking() {
             fill
             sizes="(max-width: 768px) 100vw, 600px"
             className="object-cover"
-            style={{ objectPosition: "75% center" }}
+            style={{ objectPosition: "90% center" }}
             priority
           />
           {/* Brighten everything subtly so text contrast improves */}
@@ -87,11 +87,11 @@ export function Booking() {
           {/* Strong cream wash on the LEFT half — this is the "white space" where the text group sits */}
           <div
             aria-hidden
-            className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] bg-gradient-to-r from-cream via-cream/85 to-transparent"
+            className="absolute inset-y-0 left-0 w-[60%] md:w-[55%] bg-gradient-to-r from-cream via-cream/85 to-transparent"
           />
 
-          {/* Text + QR + LINE id — bottom-aligned within the whitespace so the LINE id sits level with the SEND button. */}
-          <div className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] flex flex-col items-center justify-end text-center gap-5 md:gap-6 p-4 md:p-7">
+          {/* Text + QR + LINE id — shifted RIGHT toward the model so it breathes off the form. */}
+          <div className="absolute inset-y-0 left-[10%] md:left-[18%] w-[60%] md:w-[42%] flex flex-col items-center justify-end text-center gap-5 md:gap-6 p-4 md:p-7">
             <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug">
               {pick(
                 lang,
