@@ -40,14 +40,14 @@ const hypnotherapyTopics = [
 ];
 
 const feature: Service = {
-  title: { en: "Private Coaching", th: "Private Coaching" },
+  title: { en: "Private\nCoaching", th: "Private\nCoaching" },
   description: {
     en: "Deep-dive coaching to identify and resolve root causes while designing a sustainable lifestyle.",
     th: "การโค้ชเชิงลึก เพื่อระบุและแก้ปัญหาที่ต้นตอ รวมถึงช่วยออกแบบและพัฒนาไลฟ์สไตล์ เพื่อให้เกิดผลลัพธ์ที่ยั่งยืน",
   },
   meta: {
-    en: "Online session · 60–90 minutes per session",
-    th: "ในแต่ละเซสชั่นจะใช้เวลาประมาณ 60–90 นาที",
+    en: "Online session\nDuration: 60-90 minutes per session",
+    th: "Online session\nระยะเวลา: 60-90 นาที / เซสชั่น",
   },
   topics: coachingTopics,
   img: "/img/service-private-coaching.jpg",
@@ -146,11 +146,21 @@ const cards: Service[] = [
   },
 ];
 
-function CreamPill({ children }: { children: React.ReactNode }) {
+function CreamPill({
+  children,
+  smaller = false,
+}: {
+  children: React.ReactNode;
+  smaller?: boolean;
+}) {
   return (
     <a
       href="#booking"
-      className="inline-block text-[13px] md:text-sm tracking-[0.22em] uppercase px-7 py-3.5 rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm"
+      className={`inline-block uppercase rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm ${
+        smaller
+          ? "text-[11px] md:text-[12px] tracking-[0.32em] px-6 py-3"
+          : "text-[13px] md:text-sm tracking-[0.22em] px-7 py-3.5"
+      }`}
     >
       {children}
     </a>
@@ -169,13 +179,16 @@ function CardBody({
   const titleLines = s.title[lang].split("\n");
   const isFeature = layout === "feature";
 
+  // Bullet marker — disc for feature (per Canva ref), middle-dot for stacked cards.
+  const bulletMark = isFeature ? "•" : "·";
+
   const bulletsBlock = (s.topics || s.bullets) && (
     <div>
       {s.topics && (
         <ul className="space-y-1 text-[13px] leading-snug">
           {s.topics.map((t) => (
             <li key={t.en} className="flex gap-2 items-start">
-              <span className="opacity-70 mt-0.5">·</span>
+              <span className="opacity-80 mt-0.5">{bulletMark}</span>
               <span>{t[lang]}</span>
             </li>
           ))}
@@ -185,7 +198,7 @@ function CardBody({
         <ul className="space-y-1.5 text-[13px] leading-snug">
           {s.bullets.map((b) => (
             <li key={b.en} className="flex gap-2 items-start">
-              <span className="opacity-70 mt-0.5">·</span>
+              <span className="opacity-80 mt-0.5">{bulletMark}</span>
               <div>
                 <span className="block">
                   {lang === "th" && b.th ? b.th : b.en}
@@ -210,25 +223,60 @@ function CardBody({
       }`}
     >
       <p
-        className="text-[12px] md:text-[13px] italic leading-snug whitespace-pre-line"
+        className={`leading-snug whitespace-pre-line ${
+          isFeature
+            ? "italic text-[13px] md:text-sm"
+            : "italic text-[12px] md:text-[13px]"
+        }`}
         style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}
       >
         {s.meta[lang]}
       </p>
-      <CreamPill>{pick(lang, "Book a session", "จองเซสชั่น")}</CreamPill>
+      <CreamPill smaller={isFeature}>
+        {pick(lang, "Book a session", "จองเซสชั่น")}
+      </CreamPill>
     </div>
   );
 
+  // Feature card per Canva reference: title at top, bullets bottom-left, meta+CTA bottom-right.
+  if (isFeature) {
+    return (
+      <div
+        className="relative h-full flex flex-col text-cream px-6 md:px-10 lg:px-14 pt-6 md:pt-8 pb-6 md:pb-8 justify-between"
+        style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
+      >
+        <div className="text-center">
+          <h3
+            className={`leading-[1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl`}
+          >
+            {titleLines.map((line, i) => (
+              <span key={i} className="block">
+                {line}
+              </span>
+            ))}
+          </h3>
+          <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-xl mx-auto text-pretty">
+            {s.description[lang]}
+          </p>
+        </div>
+
+        {/* Bottom row: bullets left · meta+CTA right (avoids overlapping people in the bg) */}
+        <div className="mt-auto flex items-end justify-between gap-6 md:gap-10">
+          <div className="self-end">{bulletsBlock}</div>
+          <div className="self-end">{metaCtaBlock}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
-      className={`relative h-full flex flex-col text-cream px-6 md:px-8 py-8 md:py-10 ${
-        isFeature ? "justify-center" : "justify-between gap-6"
-      }`}
+      className="relative h-full flex flex-col text-cream px-6 md:px-8 py-8 md:py-10 justify-between gap-6"
       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.45)" }}
     >
       <div className="text-center">
         <h3
-          className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+          className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl lg:text-5xl`}
         >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
@@ -241,19 +289,10 @@ function CardBody({
         </p>
       </div>
 
-      {isFeature ? (
-        <div className="mt-6 md:mt-8 mx-auto w-fit max-w-full flex flex-col md:flex-row items-center md:items-end justify-center gap-5 md:gap-10 lg:gap-14">
-          {bulletsBlock}
-          {metaCtaBlock}
-        </div>
-      ) : (
-        <>
-          {bulletsBlock && (
-            <div className="mx-auto w-fit max-w-full">{bulletsBlock}</div>
-          )}
-          {metaCtaBlock}
-        </>
+      {bulletsBlock && (
+        <div className="mx-auto w-fit max-w-full">{bulletsBlock}</div>
       )}
+      {metaCtaBlock}
     </div>
   );
 }
@@ -264,7 +303,7 @@ export function Services() {
     <section id="services" className="bg-tan-deep py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <h2
-          className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-cream mb-10 md:mb-14`}
+          className={`${lang === "th" ? "font-display-th font-medium" : "font-body font-normal"} text-3xl md:text-4xl leading-[1.1] text-cream mb-10 md:mb-14`}
         >
           {pick(lang, "Our Services", "บริการต่าง ๆ ของ Coach Aor CA")}
         </h2>
