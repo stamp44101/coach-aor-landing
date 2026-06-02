@@ -70,7 +70,8 @@ export function Booking() {
           </form>
         </div>
 
-        {/* RIGHT — photo with overlaid copy + QR + contact. Matches Canva original layout. */}
+        {/* RIGHT — photo fills the entire right column, text+QR sits in the whitespace NEXT TO her (left half).
+            Subtle white overlay brightens the photo so the cocoa text reads cleanly. */}
         <div className="order-1 md:order-2 relative aspect-[3/4] md:aspect-[4/5] overflow-hidden rounded-[2px]">
           <Image
             src="/img/booking-portrait.jpg"
@@ -78,18 +79,20 @@ export function Booking() {
             fill
             sizes="(max-width: 768px) 100vw, 600px"
             className="object-cover"
-            style={{ objectPosition: "center" }}
+            style={{ objectPosition: "75% center" }}
             priority
           />
-          {/* Soft cream fade on the LEFT edge of the photo for seamless blend into form area */}
+          {/* Brighten everything subtly so text contrast improves */}
+          <div aria-hidden className="absolute inset-0 bg-white/25" />
+          {/* Strong cream wash on the LEFT half — this is the "white space" where the text group sits */}
           <div
             aria-hidden
-            className="absolute inset-y-0 left-0 w-32 md:w-40 bg-gradient-to-r from-cream via-cream/60 to-transparent"
+            className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] bg-gradient-to-r from-cream via-cream/85 to-transparent"
           />
 
-          {/* All right-side copy + QR + LINE id centered as a single block within the photo area */}
-          <div className="absolute inset-0 p-5 md:p-7 flex flex-col items-center justify-center text-center gap-5 md:gap-6">
-            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug max-w-[300px]">
+          {/* Text + QR + LINE id — centered within the whitespace on the LEFT half of the photo container */}
+          <div className="absolute inset-y-0 left-0 w-[58%] md:w-[55%] flex flex-col items-center justify-center text-center gap-5 md:gap-6 p-4 md:p-6">
+            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug">
               {pick(
                 lang,
                 <>
