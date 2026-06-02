@@ -87,9 +87,9 @@ export function Booking() {
             className="absolute inset-y-0 left-0 w-32 md:w-40 bg-gradient-to-r from-cream via-cream/60 to-transparent"
           />
 
-          <div className="absolute inset-0 p-5 md:p-7 flex flex-col items-end justify-between text-right">
-            {/* Top: tagline */}
-            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug max-w-[280px]">
+          {/* All right-side copy + QR + LINE id centered as a single block within the photo area */}
+          <div className="absolute inset-0 p-5 md:p-7 flex flex-col items-center justify-center text-center gap-5 md:gap-6">
+            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug max-w-[300px]">
               {pick(
                 lang,
                 <>
@@ -101,60 +101,52 @@ export function Booking() {
               )}
             </p>
 
-            {/* Bottom group: QR codes + contact lines */}
-            <div className="flex flex-col items-end gap-3">
-              <div
-                className="flex gap-3 md:gap-4"
-                style={{ mixBlendMode: "multiply" }}
-              >
-                <div className="text-center">
-                  <div className="relative w-20 h-20 md:w-24 md:h-24">
-                    <Image
-                      src="/img/whatsapp-qr.jpg"
-                      alt="Scan to message Coach Aor on WhatsApp"
-                      fill
-                      sizes="96px"
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
-                  <p className="mt-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa">
-                    WhatsApp
-                  </p>
+            <div
+              className="flex gap-3 md:gap-4"
+              style={{ mixBlendMode: "multiply" }}
+            >
+              <div className="text-center">
+                <div className="relative w-20 h-20 md:w-24 md:h-24">
+                  <Image
+                    src="/img/whatsapp-qr.jpg"
+                    alt="Scan to message Coach Aor on WhatsApp"
+                    fill
+                    sizes="96px"
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-                <div className="text-center">
-                  <div className="relative w-20 h-20 md:w-24 md:h-24">
-                    <Image
-                      src="/img/line-qr.png"
-                      alt="Scan to add Coach Aor on LINE Official"
-                      fill
-                      sizes="96px"
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
-                  <p className="mt-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa">
-                    LINE Official
-                  </p>
-                </div>
+                <p className="mt-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa">
+                  WhatsApp
+                </p>
               </div>
-              <p className="text-cocoa text-sm md:text-base font-display italic">
-                <a
-                  href="https://lin.ee/ZVRHOhSu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  Line Official : @coachaor.ca
-                </a>
-              </p>
-              <a
-                href="mailto:soulfulwomens@gmail.com"
-                className="text-cocoa-soft text-xs md:text-sm tracking-wide hover:text-cocoa transition-colors"
-              >
-                soulfulwomens@gmail.com
-              </a>
+              <div className="text-center">
+                <div className="relative w-20 h-20 md:w-24 md:h-24">
+                  <Image
+                    src="/img/line-qr.png"
+                    alt="Scan to add Coach Aor on LINE Official"
+                    fill
+                    sizes="96px"
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+                <p className="mt-1.5 text-[10px] md:text-[11px] tracking-[0.18em] uppercase text-cocoa">
+                  LINE Official
+                </p>
+              </div>
             </div>
+
+            <p className="text-cocoa text-sm md:text-base font-display italic">
+              <a
+                href="https://lin.ee/ZVRHOhSu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Line Official : @coachaorca
+              </a>
+            </p>
           </div>
         </div>
       </div>
