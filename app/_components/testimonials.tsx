@@ -69,14 +69,15 @@ export function Testimonials() {
           {items.map((t) => (
             <figure
               key={t.name.en}
-              className="relative overflow-hidden rounded-[2px] min-h-[460px] md:min-h-[540px] flex"
+              className="group relative overflow-hidden rounded-[2px] min-h-[460px] md:min-h-[540px] flex"
             >
               {/* Use background-image (not next/image) so we can zoom/crop into the face precisely.
-                  backgroundSize 'cover' + backgroundPosition gives full control of focal point. */}
+                  backgroundSize 'cover' + backgroundPosition gives full control of focal point.
+                  Slight scale-up on hover so the card feels interactive. */}
               <div
                 role="img"
                 aria-label={t.name[lang]}
-                className="absolute inset-0"
+                className="absolute inset-0 transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.06]"
                 style={{
                   backgroundImage: `url('${t.img}')`,
                   backgroundSize: t.bgSize ?? "cover",
@@ -88,7 +89,7 @@ export function Testimonials() {
               {/* Stronger gradient — keeps quote legible, leaves top 40% clean for the face */}
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent transition-opacity duration-500 group-hover:from-black/45 group-hover:via-black/15"
               />
               <div
                 className="relative z-10 flex-1 p-6 md:p-8 text-white flex flex-col justify-end"
