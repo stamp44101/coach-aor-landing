@@ -220,7 +220,7 @@ function CardBody({
   const metaCtaBlock = (
     <div
       className={`flex flex-col items-center gap-4 text-center ${
-        isFeature ? "md:items-end md:text-right" : ""
+        isFeature ? "md:items-start md:text-left" : ""
       }`}
     >
       <p
@@ -233,9 +233,7 @@ function CardBody({
       >
         {s.meta[lang]}
       </p>
-      <CreamPill smaller={isFeature}>
-        {pick(lang, "Book a session", "จองเซสชั่น")}
-      </CreamPill>
+      <CreamPill>{pick(lang, "Book a session", "จองเซสชั่น")}</CreamPill>
     </div>
   );
 
