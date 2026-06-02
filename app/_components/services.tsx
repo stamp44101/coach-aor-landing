@@ -150,7 +150,7 @@ function CreamPill({ children }: { children: React.ReactNode }) {
   return (
     <a
       href="#booking"
-      className="inline-block text-[11px] tracking-[0.22em] uppercase px-6 py-3 rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm"
+      className="inline-block text-[13px] md:text-sm tracking-[0.22em] uppercase px-7 py-3.5 rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm"
     >
       {children}
     </a>
@@ -228,7 +228,7 @@ function CardBody({
     >
       <div className="text-center">
         <h3
-          className={`leading-[1.1] ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+          className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
         >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
@@ -236,7 +236,7 @@ function CardBody({
             </span>
           ))}
         </h3>
-        <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-md mx-auto">
+        <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-md mx-auto text-pretty">
           {s.description[lang]}
         </p>
       </div>

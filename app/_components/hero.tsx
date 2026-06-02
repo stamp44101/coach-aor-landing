@@ -33,13 +33,13 @@ export function Hero() {
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="text-center max-w-4xl mx-auto">
             {lang === "en" ? (
-              <h1 className="font-display italic font-normal text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
+              <h1 className="font-display italic font-normal text-balance text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] leading-[1.02] text-cocoa">
                 Step Into Your
                 <br />
                 Feminine Power
               </h1>
             ) : (
-              <h1 className="font-display-th text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.15] text-cocoa font-medium">
+              <h1 className="font-display-th text-balance text-3xl sm:text-4xl md:text-5xl lg:text-[3.75rem] leading-[1.15] text-cocoa font-medium">
                 ปลดปล่อยพลังภายใน
                 <br />
                 และศักยภาพความเป็นหญิงของคุณ
@@ -48,7 +48,7 @@ export function Hero() {
             <p className="mt-4 md:mt-5 text-[11px] md:text-xs tracking-[0.32em] uppercase text-cocoa-soft">
               {pick(lang, "With Coach Aor", "กับโค้ชอ้อ")}
             </p>
-            <p className="mt-7 md:mt-9 text-sm md:text-base text-cocoa-soft max-w-xl mx-auto leading-relaxed">
+            <p className="mt-7 md:mt-9 text-sm md:text-base text-cocoa-soft max-w-xl mx-auto leading-relaxed text-pretty">
               {pick(
                 lang,
                 "“I believe that every woman can create the life she desires, once she truly knows herself and unlocks her power within.”",
@@ -57,11 +57,11 @@ export function Hero() {
             </p>
             <a
               href="#booking"
-              className="inline-block mt-8 md:mt-10 px-10 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors rounded-full"
+              className="inline-block mt-8 md:mt-10 px-10 py-4 text-[13px] md:text-sm tracking-[0.28em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors rounded-full"
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
-            <p className="mt-6 md:mt-7 text-[13px] text-mocha tracking-wide max-w-xl mx-auto">
+            <p className="mt-6 md:mt-7 text-[13px] text-mocha tracking-wide max-w-xl mx-auto text-pretty">
               {pick(
                 lang,
                 "Unleash Your Inner Power & Feminine Potential With Coach Aor.",
@@ -78,7 +78,7 @@ export function Hero() {
         className="mx-auto max-w-7xl px-6 md:px-12 pb-20 md:pb-28"
       >
         <h2
-          className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-3xl md:text-4xl text-cocoa mb-8 md:mb-10`}
+          className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-balance text-3xl md:text-4xl text-cocoa mb-8 md:mb-10`}
         >
           {pick(lang, "About Coach Aor", "ประวัติโค้ชอ้อ")}
         </h2>
@@ -110,7 +110,7 @@ export function Hero() {
             <p className="font-display italic text-[13px] md:text-sm text-cocoa-soft/85">
               (Transformational Coach &amp; Founder of Coach Aor CA)
             </p>
-            <div className="mt-6 space-y-4 text-cocoa-soft text-[14.5px] leading-relaxed max-w-xl">
+            <div className="mt-6 space-y-4 text-cocoa-soft text-[14.5px] leading-relaxed max-w-xl text-pretty">
               {lang === "en" ? (
                 <>
                   <p>
@@ -163,7 +163,7 @@ export function Hero() {
             </div>
             <a
               href="#booking"
-              className="inline-block self-start mt-8 px-9 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
+              className="inline-block self-start mt-8 px-9 py-4 text-[13px] md:text-sm tracking-[0.28em] uppercase text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors rounded-full"
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
