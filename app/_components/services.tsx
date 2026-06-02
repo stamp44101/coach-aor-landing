@@ -150,7 +150,7 @@ function CreamPill({ children }: { children: React.ReactNode }) {
   return (
     <a
       href="#booking"
-      className="inline-block text-[11px] tracking-[0.22em] uppercase px-6 py-3 rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm"
+      className="inline-block text-[13px] md:text-sm tracking-[0.22em] uppercase px-7 py-3.5 rounded-full bg-cream text-cocoa hover:bg-cream-soft transition-colors whitespace-nowrap shadow-sm"
     >
       {children}
     </a>

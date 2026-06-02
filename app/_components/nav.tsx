@@ -73,7 +73,7 @@ export function Nav() {
           {/* Desktop CTA */}
           <a
             href="#booking"
-            className="hidden md:inline-block text-[11px] md:text-xs uppercase tracking-[0.2em] text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors px-4 md:px-6 py-2.5 md:py-3 rounded-full"
+            className="hidden md:inline-block text-[13px] md:text-sm uppercase tracking-[0.2em] text-cocoa border border-cocoa/70 hover:bg-cocoa hover:text-cream transition-colors px-5 md:px-7 py-2.5 md:py-3 rounded-full"
           >
             {pick(lang, "Book a session", "จองเซสชั่น")}
           </a>
@@ -177,7 +177,7 @@ export function Nav() {
             <a
               href="#booking"
               onClick={() => setOpen(false)}
-              className="block text-center text-[12px] tracking-[0.22em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors px-6 py-3.5 rounded-full"
+              className="block text-center text-sm tracking-[0.22em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors px-6 py-3.5 rounded-full"
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
