@@ -51,8 +51,8 @@ const feature: Service = {
   },
   topics: coachingTopics,
   img: "/img/service-private-coaching.jpg",
-  // Focal high — heads of the people sit right at the top edge of the card.
-  imgPosition: "center 75%",
+  // Focal: heads at the very top edge — hair just touches/slightly cropped per Canva ref.
+  imgPosition: "center 77%",
 };
 
 const cards: Service[] = [
