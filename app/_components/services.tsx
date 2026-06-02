@@ -228,7 +228,7 @@ function CardBody({
     >
       <div className="text-center">
         <h3
-          className={`leading-[1.1] ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
+          className={`leading-[1.1] text-balance ${lang === "th" && /[ก-๛]/.test(s.title.th) ? "font-display-th font-medium" : "font-display italic"} ${isFeature ? "text-4xl md:text-5xl lg:text-6xl" : "text-3xl md:text-4xl lg:text-5xl"}`}
         >
           {titleLines.map((line, i) => (
             <span key={i} className="block">
@@ -236,7 +236,7 @@ function CardBody({
             </span>
           ))}
         </h3>
-        <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-md mx-auto">
+        <p className="mt-3 md:mt-4 text-[13px] md:text-[14px] leading-relaxed max-w-md mx-auto text-pretty">
           {s.description[lang]}
         </p>
       </div>

@@ -38,7 +38,23 @@ html, body { background: var(--color-cream); color: var(--color-cocoa); }
 body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  /* Better wrap for both EN and TH; browser uses Thai dictionary when html[lang="th"]. */
+  text-wrap: pretty;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
+
+/* Thai-specific tuning: keep word groupings tight; rely on browser Thai segmenter.
+   `lang="th"` is set on <html> at runtime by LangProvider so this matches. */
+:lang(th) {
+  line-break: auto;
+  word-break: normal;
+  hyphens: none;
+}
+
+/* Headlines look better with balanced line lengths (Tailwind also exposes `text-balance`). */
+h1, h2, h3 { text-wrap: balance; }
 
 .font-display    { font-family: var(--font-display); }
 .font-display-th { font-family: var(--font-display-th); font-style: normal; letter-spacing: -0.01em; }

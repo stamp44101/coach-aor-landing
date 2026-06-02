@@ -14,7 +14,7 @@ export function Booking() {
         {/* LEFT — form */}
         <div className="order-2 md:order-1">
           <h2
-            className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
+            className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-balance text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
           >
             {pick(lang, "Booking & Consultation", "การจองคิวปรึกษา")}
           </h2>
@@ -92,7 +92,7 @@ export function Booking() {
 
           {/* Text + QR + LINE id — flush to the RIGHT edge of the photo (per Canva original) */}
           <div className="absolute inset-y-0 right-0 w-[60%] md:w-[50%] flex flex-col items-center justify-end text-center gap-5 md:gap-6 p-4 md:p-7">
-            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug">
+            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug text-balance">
               {pick(
                 lang,
                 <>
