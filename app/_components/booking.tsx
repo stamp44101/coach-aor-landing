@@ -14,7 +14,7 @@ export function Booking() {
         {/* LEFT — form */}
         <div className="order-2 md:order-1">
           <h2
-            className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
+            className={`${lang === "th" ? "font-display-th font-medium" : "font-display italic"} text-balance text-4xl md:text-5xl lg:text-6xl text-cocoa leading-[1.1]`}
           >
             {pick(lang, "Booking & Consultation", "การจองคิวปรึกษา")}
           </h2>
@@ -63,7 +63,7 @@ export function Booking() {
             </label>
             <button
               type="submit"
-              className="mt-2 w-full px-9 py-3.5 text-[12px] tracking-[0.24em] uppercase text-cream bg-cocoa hover:bg-cocoa-soft transition-colors rounded-full"
+              className="mt-2 w-full px-9 py-4 text-sm md:text-[15px] tracking-[0.24em] uppercase text-cream bg-cocoa hover:bg-cocoa-soft cursor-pointer transition-colors rounded-full"
             >
               {pick(lang, "Send", "ส่ง")}
             </button>
@@ -92,7 +92,7 @@ export function Booking() {
 
           {/* Text + QR + LINE id — flush to the RIGHT edge of the photo (per Canva original) */}
           <div className="absolute inset-y-0 right-0 w-[60%] md:w-[50%] flex flex-col items-center justify-end text-center gap-5 md:gap-6 p-4 md:p-7">
-            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug">
+            <p className="text-cocoa text-base md:text-lg lg:text-xl leading-snug text-balance">
               {pick(
                 lang,
                 <>
