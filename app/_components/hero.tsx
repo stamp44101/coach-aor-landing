@@ -61,7 +61,7 @@ export function Hero() {
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
-            <p className="mt-7 md:mt-8 text-[13px] text-mocha tracking-wide max-w-xl mx-auto">
+            <p className="mt-7 md:mt-8 text-[13px] text-mocha tracking-wide text-balance max-w-[20rem] sm:max-w-md md:max-w-xl mx-auto">
               {pick(
                 lang,
                 "Unleash Your Inner Power & Feminine Potential With Coach Aor.",
