@@ -48,7 +48,7 @@ export function Hero() {
             <p className="mt-4 md:mt-5 text-[11px] md:text-xs tracking-[0.32em] uppercase text-cocoa-soft">
               {pick(lang, "With Coach Aor", "กับโค้ชอ้อ")}
             </p>
-            <p className="mt-7 md:mt-9 text-sm md:text-base text-cocoa-soft max-w-xl mx-auto leading-relaxed">
+            <p className="mt-8 md:mt-10 text-sm md:text-base text-cocoa-soft max-w-xl mx-auto leading-[1.7] md:leading-relaxed">
               {pick(
                 lang,
                 "“I believe that every woman can create the life she desires, once she truly knows herself and unlocks her power within.”",
@@ -57,11 +57,11 @@ export function Hero() {
             </p>
             <a
               href="#booking"
-              className="inline-block mt-8 md:mt-10 px-10 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cream bg-mocha hover:bg-mocha/85 transition-colors rounded-full"
+              className="inline-block mt-10 md:mt-12 px-10 py-3.5 text-[11px] tracking-[0.28em] uppercase text-cream bg-cocoa hover:bg-cocoa/85 transition-colors rounded-full"
             >
               {pick(lang, "Book a session", "จองเซสชั่น")}
             </a>
-            <p className="mt-6 md:mt-7 text-[13px] text-mocha tracking-wide max-w-xl mx-auto">
+            <p className="mt-7 md:mt-8 text-[13px] text-mocha tracking-wide max-w-xl mx-auto">
               {pick(
                 lang,
                 "Unleash Your Inner Power & Feminine Potential With Coach Aor.",
